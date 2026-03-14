@@ -91,6 +91,9 @@ The simplest way. One single line in the `<head>` handles both CSS injection and
 </head>
 ```
 
+> [!NOTE]
+> Using the JS loader (**Option B**) may cause a slight flash of unstyled content (FOUC) during page load as the CSS is injected via JavaScript. For a perfectly smooth experience, use **Option A**.
+
 ### 3. API Usage
 
 Regardless of the option chosen (unless you skipped JS), you can use the global `btdt` object:
