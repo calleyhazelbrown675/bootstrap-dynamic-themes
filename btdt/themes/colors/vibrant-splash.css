@@ -15,13 +15,22 @@
 .btn-primary {
   --bs-btn-bg: var(--bs-primary);
   --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-color: #ffffff;
   --bs-btn-hover-bg: #f43f5e;
   --bs-btn-hover-border-color: #f43f5e;
   filter: brightness(0.9);
 }
 
-.bg-primary { background-color: var(--bs-primary) !important; color: #fff !important; }
-.bg-secondary { background-color: var(--bs-secondary) !important; color: #fff !important; }
+.bg-primary { background-color: var(--bs-primary) !important; color: #ffffff !important; }
+.bg-secondary { background-color: var(--bs-secondary) !important; color: #ffffff !important; }
+
+/* Navbar contrast fix */
+.navbar-dark .navbar-nav .nav-link,
+.navbar[data-bs-theme="dark"] .navbar-nav .nav-link,
+.bg-primary .navbar-nav .nav-link,
+.bg-primary .navbar-brand {
+  color: inherit !important;
+}
 
 [class*="bg-"]:not(.navbar) a:not(.btn):not(.nav-link) {
   color: inherit !important;

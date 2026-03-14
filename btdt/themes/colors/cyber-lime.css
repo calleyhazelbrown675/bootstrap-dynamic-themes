@@ -22,7 +22,15 @@
 }
 
 .bg-primary { background-color: var(--bs-primary) !important; color: #101010 !important; }
-.bg-secondary { background-color: var(--bs-secondary) !important; color: #101010 !important; }
+.bg-secondary { background-color: var(--bs-secondary) !important; color: #ffffff !important; }
+
+/* Navbar contrast fix */
+.navbar-dark .navbar-nav .nav-link,
+.navbar[data-bs-theme="dark"] .navbar-nav .nav-link,
+.bg-primary .navbar-nav .nav-link,
+.bg-primary .navbar-brand {
+  color: inherit !important;
+}
 
 [class*="bg-"]:not(.navbar) a:not(.btn):not(.nav-link) {
   color: inherit !important;

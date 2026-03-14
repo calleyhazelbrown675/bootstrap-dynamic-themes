@@ -28,6 +28,11 @@ If the `--bs-primary` or `--bs-secondary` color is light (e.g., pastels, lime, y
 - Elements like `.bg-primary`, `.bg-secondary`, and `.btn-primary` MUST use a dark text color (e.g., `#1a1a1a`) instead of white to ensure legibility.
 - Conversely, for dark primary colors, always use white text.
 
+### 1.2 Component Overrides
+- **Navbar**: Ensure the navbar text is legible on the primary background. Add an override for `.navbar-dark .navbar-nav .nav-link` to use `inherit` color if the primary background is light.
+- **Progress Bars**: Set the background color to match the primary.
+- **Links**: Ensure link visibility on all background variations.
+
 ### 2. Button Overrides
 Customize `.btn-primary` and `.btn-secondary` to match the palette. Ensure text remains legible on the button background.
 

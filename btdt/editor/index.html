@@ -11,6 +11,10 @@
   <link rel="stylesheet" href="../themes/preset/default.css?v=0.0.0" />
 
   <style>
+    .color-inherit {
+      color: inherit !important;
+    }
+
     /* ===== Theme Control Panel ===== */
     .theme-panel {
       position: fixed;
@@ -28,6 +32,21 @@
 
     .theme-panel.open {
       right: 0;
+    }
+
+    /* Panel Scrollbar */
+    .theme-panel::-webkit-scrollbar {
+      width: 8px;
+    }
+    .theme-panel::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    .theme-panel::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 10px;
+    }
+    .theme-panel::-webkit-scrollbar-thumb:hover {
+      background: #999;
     }
 
     .theme-panel-toggle {
@@ -164,7 +183,7 @@
     }
 
     .color-swatch:hover {
-      transform: scale(1.05);
+      transform: scale(1.02);
     }
 
     .color-swatch .swatch-colors {
@@ -188,50 +207,11 @@
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
     }
 
-    /* Preset cards */
-    .preset-card {
-      cursor: pointer;
-      border: 1px solid var(--panel-border);
-      transition: transform 0.15s ease, border-color 0.15s ease;
-      padding: 10px;
-      border-radius: 12px;
-      background: var(--panel-bg);
-      display: grid;
-      gap: 8px;
-    }
-
-    .preset-card:hover {
-      border-color: var(--panel-primary);
-      transform: translateY(-1px);
-    }
-
-    .preset-card.active {
-      border-color: var(--panel-primary);
-      box-shadow: 0 0 0 2px rgba(var(--panel-primary-rgb), 0.2);
-    }
-
-    .preset-swatch {
-      height: 28px;
-      border-radius: 8px;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr 0.8fr;
-      border: 1px solid var(--panel-border);
-    }
-
-    .preset-title {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--panel-text);
-      text-transform: none;
-      letter-spacing: 0;
-    }
-
     /* Custom Select Component */
     .custom-select-container {
       position: relative;
       width: 100%;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .custom-select-trigger {
@@ -244,8 +224,8 @@
       align-items: center;
       justify-content: space-between;
       cursor: pointer;
-      transition: all 0.2s ease;
-      font-size: 0.9rem;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 0.88rem;
       font-weight: 500;
       color: var(--panel-text);
       text-align: left;
@@ -254,11 +234,19 @@
     .custom-select-trigger:hover {
       border-color: var(--panel-primary);
       background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .custom-select-container.open .custom-select-trigger {
+      border-color: var(--panel-primary);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(var(--panel-primary-rgb), 0.15);
     }
 
     .custom-select-trigger:after {
       content: '▾';
-      font-size: 1.2rem;
+      font-size: 1.1rem;
+      line-height: 1;
       color: var(--panel-muted);
       transition: transform 0.2s;
       margin-left: 8px;
@@ -266,6 +254,7 @@
 
     .custom-select-container.open .custom-select-trigger:after {
       transform: rotate(180deg);
+      color: var(--panel-primary);
     }
 
     .custom-select-content {
@@ -274,6 +263,7 @@
       gap: 10px;
       flex-grow: 1;
       overflow: hidden;
+      white-space: nowrap;
     }
 
     .custom-select-dropdown {
@@ -284,12 +274,21 @@
       background: #fff;
       border: 1px solid var(--panel-border);
       border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
       z-index: 1001;
-      max-height: 350px;
+      max-height: 380px;
       overflow-y: auto;
       display: none;
       padding: 8px;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .custom-select-dropdown.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* Custom Scrollbar */
@@ -336,18 +335,25 @@
     }
 
     .custom-option.active {
-      background: rgba(var(--panel-primary-rgb), 0.1);
+      background: rgba(var(--panel-primary-rgb), 0.08);
       color: var(--panel-primary);
       font-weight: 600;
     }
 
+    .custom-option.active:after {
+      content: '✓';
+      margin-left: auto;
+      font-size: 1rem;
+      color: var(--panel-primary);
+    }
+
     .mini-swatch {
-      width: 48px;
-      height: 24px;
-      border-radius: 6px;
+      width: 44px;
+      height: 22px;
+      border-radius: 4px;
       display: flex;
       overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.1);
+      border: 1px solid rgba(0,0,0,0.15);
       flex-shrink: 0;
     }
 
@@ -698,37 +704,79 @@
     <!-- BORDERS -->
     <div class="panel-section">
       <h6>📐 Borders</h6>
-      <div class="option-group" id="bordersGroup"></div>
+      <div class="custom-select-container" data-select-type="borders" id="bordersSelectContainer">
+        <div class="custom-select-trigger" onclick="toggleCustomDropdown('borders')">
+          <div class="custom-select-content" id="bordersSelectContent">
+            <span>Select border...</span>
+          </div>
+        </div>
+        <div class="custom-select-dropdown" id="bordersDropdown"></div>
+      </div>
     </div>
 
     <!-- ROUNDING -->
     <div class="panel-section">
       <h6>⭕ Corners</h6>
-      <div class="option-group" id="roundingGroup"></div>
+      <div class="custom-select-container" data-select-type="rounding" id="roundingSelectContainer">
+        <div class="custom-select-trigger" onclick="toggleCustomDropdown('rounding')">
+          <div class="custom-select-content" id="roundingSelectContent">
+            <span>Select rounding...</span>
+          </div>
+        </div>
+        <div class="custom-select-dropdown" id="roundingDropdown"></div>
+      </div>
     </div>
 
     <!-- SHADOWS -->
     <div class="panel-section">
       <h6>💫 Shadows</h6>
-      <div class="option-group" id="shadowsGroup"></div>
+      <div class="custom-select-container" data-select-type="shadows" id="shadowsSelectContainer">
+        <div class="custom-select-trigger" onclick="toggleCustomDropdown('shadows')">
+          <div class="custom-select-content" id="shadowsSelectContent">
+            <span>Select shadows...</span>
+          </div>
+        </div>
+        <div class="custom-select-dropdown" id="shadowsDropdown"></div>
+      </div>
     </div>
 
     <!-- SPACING -->
     <div class="panel-section">
       <h6>↔️ Spacing</h6>
-      <div class="option-group" id="spacingGroup"></div>
+      <div class="custom-select-container" data-select-type="spacing" id="spacingSelectContainer">
+        <div class="custom-select-trigger" onclick="toggleCustomDropdown('spacing')">
+          <div class="custom-select-content" id="spacingSelectContent">
+            <span>Select spacing...</span>
+          </div>
+        </div>
+        <div class="custom-select-dropdown" id="spacingDropdown"></div>
+      </div>
     </div>
 
     <!-- GRADIENTS -->
     <div class="panel-section">
       <h6>🌈 Gradients</h6>
-      <div class="option-group" id="gradientsGroup"></div>
+      <div class="custom-select-container" data-select-type="gradients" id="gradientsSelectContainer">
+        <div class="custom-select-trigger" onclick="toggleCustomDropdown('gradients')">
+          <div class="custom-select-content" id="gradientsSelectContent">
+            <span>Gradients?</span>
+          </div>
+        </div>
+        <div class="custom-select-dropdown" id="gradientsDropdown"></div>
+      </div>
     </div>
 
     <!-- ACCENT -->
     <div class="panel-section">
       <h6>✨ Accent Line</h6>
-      <div class="option-group" id="accentGroup"></div>
+      <div class="custom-select-container" data-select-type="accent" id="accentSelectContainer">
+        <div class="custom-select-trigger" onclick="toggleCustomDropdown('accent')">
+          <div class="custom-select-content" id="accentSelectContent">
+            <span>Select accent...</span>
+          </div>
+        </div>
+        <div class="custom-select-dropdown" id="accentDropdown"></div>
+      </div>
     </div>
 
     <!-- CURRENT CONFIG -->
@@ -1782,7 +1830,7 @@
   </div>
 
   <!-- ==================== FOOTER ==================== -->
-  <footer class="bg-primary text-white py-5 mt-5">
+  <footer class="bg-primary py-5 mt-5">
     <div class="container">
       <div class="row g-4 mb-4">
         <div class="col-lg-4">
@@ -1795,10 +1843,10 @@
         <div class="col-6 col-lg-2">
           <h6 class="fw-bold mb-3">Product</h6>
           <ul class="nav flex-column">
-            <li class="nav-item mb-1"><a class="nav-link p-0 text-white opacity-75" href="#">Features</a></li>
-            <li class="nav-item mb-1"><a class="nav-link p-0 text-white opacity-75" href="#">Presets</a></li>
-            <li class="nav-item mb-1"><a class="nav-link p-0 text-white opacity-75" href="#">Customizer</a></li>
-            <li class="nav-item mb-1"><a class="nav-link p-0 text-white opacity-75" href="#">Download</a></li>
+            <li class="nav-item mb-1"><a class="nav-link p-0 color-inherit opacity-75" href="#">Features</a></li>
+            <li class="nav-item mb-1"><a class="nav-link p-0 color-inherit opacity-75" href="#">Presets</a></li>
+            <li class="nav-item mb-1"><a class="nav-link p-0 color-inherit opacity-75" href="#">Customizer</a></li>
+            <li class="nav-item mb-1"><a class="nav-link p-0 color-inherit opacity-75" href="#">Download</a></li>
           </ul>
         </div>
         <div class="col-6 col-lg-2">
@@ -1905,21 +1953,18 @@
         `).join('');
       document.getElementById('fontsDropdown').innerHTML = fontsHtml;
 
-      // 4. Other Option groups (Buttons)
+      // 4. Other categories (Borders, Rounding, etc.)
       ['borders', 'rounding', 'shadows', 'spacing', 'gradients', 'accent']
         .forEach(cat => {
-          const container = document.getElementById(`${cat}Group`);
-          if (!container) return;
+          const dropdown = document.getElementById(`${cat}Dropdown`);
+          if (!dropdown) return;
           const opts = Object.entries(labels[cat])
             .map(([value, label]) => `
-              <button class="option-btn"
-                      data-category="${cat}"
-                      data-value="${value}"
-                      onclick="setTheme('${cat}','${value}')">
-                ${label}
-              </button>
+              <div class="custom-option" data-value="${value}" onclick="setTheme('${cat}','${value}'); closeAllCustomDropdowns(); event.stopPropagation();">
+                <span class="option-label">${label}</span>
+              </div>
             `).join('');
-          container.innerHTML = opts;
+          dropdown.innerHTML = opts;
         });
     }
 
@@ -1959,6 +2004,11 @@
       document.querySelectorAll('.custom-select-dropdown').forEach(el => el.classList.remove('show'));
     }
 
+    // Keyboard support: Close on Esc
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeAllCustomDropdowns();
+    });
+
     // Close dropdown when clicking outside
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.custom-select-container')) {
@@ -1997,55 +2047,65 @@
       if (navText) navText.textContent = isDark ? 'Dark mode' : 'Light mode';
 
       // Update custom select options state
-      ['preset', 'colors', 'fonts'].forEach(type => {
-        const dropdown = document.getElementById(`${type}Dropdown`);
-        const triggerContent = document.getElementById(`${type}SelectContent`);
-        const value = type === 'preset' ? config._preset : config[type];
+      ['preset', 'colors', 'fonts', 'borders', 'rounding', 'shadows', 'spacing', 'gradients', 'accent']
+        .forEach(type => {
+          const dropdown = document.getElementById(`${type}Dropdown`);
+          const triggerContent = document.getElementById(`${type}SelectContent`);
+          if (!dropdown || !triggerContent) return;
 
-        // Active state in dropdown
-        dropdown.querySelectorAll('.custom-option').forEach(el => {
-          el.classList.toggle('active', el.dataset.value === value);
-        });
+          const value = type === 'preset' ? config._preset : config[type];
 
-        // Update trigger content
-        if (value && value !== 'default') {
-          if (type === 'preset') {
-            const meta = presetMeta[value] || { title: value, color: null };
-            const swatch = colorSwatches[meta.color] || { primary: '#ced4da', secondary: '#e9ecef', accent: '#adb5bd' };
-            triggerContent.innerHTML = `
-              <div class="mini-swatch">
-                <div style="background:${swatch.primary}"></div>
-                <div style="background:${swatch.secondary}"></div>
-                <div style="background:${swatch.accent}"></div>
-              </div>
-              <span class="option-label">${meta.title}</span>
-            `;
-          } else if (type === 'colors') {
-            const colors = colorSwatches[value];
-            triggerContent.innerHTML = `
-              <div class="mini-swatch">
-                <div style="background:${colors.primary}"></div>
-                <div style="background:${colors.secondary}"></div>
-                <div style="background:${colors.accent}"></div>
-              </div>
-              <span class="option-label text-capitalize">${value}</span>
-            `;
-          } else if (type === 'fonts') {
-            const label = labels.fonts[value] || value;
-            triggerContent.innerHTML = `<span class="option-label" style="font-family: '${label}', sans-serif;">${label}</span>`;
+          // Active state in dropdown
+          dropdown.querySelectorAll('.custom-option').forEach(el => {
+            el.classList.toggle('active', el.dataset.value === value);
+          });
+
+          // Update trigger content
+          if (value && value !== 'default') {
+            if (type === 'preset') {
+              const meta = presetMeta[value] || { title: value, color: null };
+              const swatch = colorSwatches[meta.color] || { primary: '#ced4da', secondary: '#e9ecef', accent: '#adb5bd' };
+              triggerContent.innerHTML = `
+                <div class="mini-swatch">
+                  <div style="background:${swatch.primary}"></div>
+                  <div style="background:${swatch.secondary}"></div>
+                  <div style="background:${swatch.accent}"></div>
+                </div>
+                <span class="option-label">${meta.title}</span>
+              `;
+            } else if (type === 'colors') {
+              const colors = colorSwatches[value];
+              triggerContent.innerHTML = `
+                <div class="mini-swatch">
+                  <div style="background:${colors.primary}"></div>
+                  <div style="background:${colors.secondary}"></div>
+                  <div style="background:${colors.accent}"></div>
+                </div>
+                <span class="option-label text-capitalize">${value}</span>
+              `;
+            } else if (type === 'fonts') {
+              const label = labels.fonts[value] || value;
+              triggerContent.innerHTML = `<span class="option-label" style="font-family: '${label}', sans-serif;">${label}</span>`;
+            } else {
+              // Standard labels (Borders, etc)
+              const label = labels[type][value] || value;
+              triggerContent.innerHTML = `<span class="option-label">${label}</span>`;
+            }
+          } else {
+            const defaultLabels = { 
+              preset: 'Select a theme...', 
+              colors: 'Select colors...', 
+              fonts: 'Select fonts...',
+              borders: 'Select border...',
+              rounding: 'Select rounding...',
+              shadows: 'Select shadows...',
+              spacing: 'Select spacing...',
+              gradients: 'Gradients?',
+              accent: 'Select accent...'
+            };
+            triggerContent.innerHTML = `<span>${defaultLabels[type]}</span>`;
           }
-        } else {
-          const defaultLabels = { preset: 'Select a theme...', colors: 'Select colors...', fonts: 'Select fonts...' };
-          triggerContent.innerHTML = `<span>${defaultLabels[type]}</span>`;
-        }
-      });
-
-      // Update pill option buttons state (Borders, Corners, etc.)
-      document.querySelectorAll('.option-btn').forEach(el => {
-        const cat = el.dataset.category;
-        const val = el.dataset.value;
-        el.classList.toggle('active', config[cat] === val);
-      });
+        });
 
       // Config display
       const pre = document.getElementById('currentConfig');

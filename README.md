@@ -33,6 +33,7 @@ While **Bootswatch** is an industry standard for static themes, **BTDT** takes i
 - **Dynamic Runtime**: Change the entire look and feel or toggle dark mode on-the-fly via the Javascript API without a page reload.
 - **Modular Design**: Mix and match components. Use the palette from one theme and the typography from another.
 - **Custom Presets**: Create and save your own theme combinations using the preset system, making your designs reusable and easy to share.
+- **No Compilation Required**: Unlike standard Bootstrap customization, you don't need SCSS, Ruby, or Node modules to tweak your look. Just standard CSS.
 - **AI-Ready**: Extend the library easily using an AI assistant (see below).
 
 ## How it Works
@@ -42,6 +43,17 @@ The application uses a **Modular CSS Injection** strategy managed by the `ThemeM
 1.  **Namespaced Engine**: Everything lives inside the `btdt/` folder to avoid filename collisions (like `js/` or `css/`) in your project.
 2.  **Base Path Awareness**: The `ThemeManager` supports a `basePath` configuration, allowing it to find its theme modules regardless of where your HTML file is located.
 3.  **Zero-CORS Metadata**: Presets include invisible CSS variables that the engine reads via computed styles, enabling full editor sync even in local environments (`file://`).
+
+## 🚀 Pure CSS - No Compilation
+
+Unlike many Bootstrap customization workflows that require complex SCSS/SASS setups, BTDT is built on **Pure CSS** using modern CSS custom properties (variables).
+
+### Advantages:
+- **Zero Build Steps**: No `npm install`, no Webpack, no Vite, and no precompilation required. Edit a CSS file and see the result instantly.
+- **Runtime Hot-Swapping**: Change the entire look and feel of your app at runtime without reloading or rebuilding.
+- **Portability**: The entire module works perfectly even when opened directly from the file system (`file:///`), making it ideal for prototyping.
+- **Zero Learning Curve**: You don't need to know CSS or SASS. Use the visual customizer to design your theme and simply copy-paste the code.
+- **Lightweight**: Zero toolchain overhead. You only ship the CSS you actually use.
 
 ## AI-Assisted Development
 
