@@ -492,44 +492,63 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link active" href="#">Home</a>
+            <a class="nav-link active" href="https://github.com/FranBarInstance/bootstrap-dynamic-themes">Home</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
               aria-expanded="false">
               Components
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul class="dropdown-menu shadow-lg border-0" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#buttons">Buttons</a></li>
-              <li><a class="dropdown-item" href="#cards">Cards</a></li>
-              <li><a class="dropdown-item" href="#forms">Forms</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
+              <li><a class="dropdown-item" href="#cards">Cards & Variations</a></li>
+              <li><a class="dropdown-item" href="#forms">Forms & Validation</a></li>
               <li><a class="dropdown-item" href="#tables">Tables</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#alerts">Alerts & Notifications</a></li>
+              <li><a class="dropdown-item" href="#lists">Lists, Badges & Progress</a></li>
+              <li><a class="dropdown-item" href="#navigation">Pills, Tabs & Pagination</a></li>
+              <li><a class="dropdown-item" href="#typography">Typography</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#accordion">Accordion</a></li>
+              <li><a class="dropdown-item" href="#carousel">Carousel</a></li>
+              <li><a class="dropdown-item" href="#collapse">Collapse</a></li>
+              <li><a class="dropdown-item" href="#dropdowns">Dropdowns</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#interactive">Modals, Toasts & Offcanvas</a></li>
+              <li><a class="dropdown-item" href="#toolbars">Toolbars & Spacing</a></li>
+              <li><a class="dropdown-item" href="#extras">Spinners & Placeholders</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Documentation</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="https://github.com/FranBarInstance/bootstrap-dynamic-themes">Documentation</a>
           </li>
         </ul>
-        <button class="btn btn-outline-light ms-lg-3 d-flex align-items-center" id="navbarModeToggle"
-          onclick="themeManager.toggleMode(); updatePanelState();" title="Toggle dark mode">
-          <span id="navbarModeIcon">☀️</span>
-          <span id="navbarModeText" class="ms-2 d-lg-none">Light mode</span>
-        </button>
-        <a href="https://github.com/FranBarInstance/bootstrap-dynamic-themes" target="_blank"
-          class="btn btn-outline-light ms-lg-2 d-flex align-items-center" title="View on GitHub">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github"
-            viewBox="0 0 16 16">
-            <path
-              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-          </svg>
-          <span class="ms-2 d-lg-none">GitHub</span>
-        </a>
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center color-inherit px-3" href="javascript:void(0)" onclick="togglePanel()" title="Open Customizer">
+              <span class="me-2">🛠️</span>
+              <span>Customize</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center color-inherit px-3" href="javascript:void(0)" id="navbarModeToggle"
+              onclick="themeManager.toggleMode(); updatePanelState();" title="Toggle dark mode">
+              <span id="navbarModeIcon">☀️</span>
+              <span id="navbarModeText" class="ms-2 d-lg-none">Light mode</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center color-inherit px-3" href="https://github.com/FranBarInstance/bootstrap-dynamic-themes" target="_blank" title="View on GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github"
+                viewBox="0 0 16 16">
+                <path
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+              </svg>
+              <span class="ms-2 d-lg-none">GitHub</span>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
@@ -550,11 +569,11 @@
           <p class="lead opacity-75 mb-4">The world's most popular CSS framework, now with real-time theme
             customization. Change colors, fonts, borders and more instantly.</p>
           <div class="d-flex flex-wrap gap-2 mb-3">
-            <a class="btn btn-light btn-lg px-4 fw-semibold toggles-ignore" href="#">Get Started</a>
-            <a class="btn btn-outline-light btn-lg px-4 toggles-ignore" href="#">Documentation</a>
+            <a class="btn btn-light btn-lg px-4 fw-semibold toggles-ignore" href="https://github.com/FranBarInstance/bootstrap-dynamic-themes">Get Started</a>
+            <a class="btn btn-outline-light btn-lg px-4 toggles-ignore" href="https://github.com/FranBarInstance/bootstrap-dynamic-themes">Documentation</a>
           </div>
           <p class="small opacity-50 mb-0">Need a completely custom build? Use the
-            <a class="text-white toggles-ignore" href="#"><u>Customizer</u></a>.
+            <a class="text-white toggles-ignore" onclick="togglePanel()" href="#"><u>Customizer</u></a>.
           </p>
         </div>
         <div class="col-lg-5 d-none d-lg-block">
@@ -897,7 +916,7 @@
     </div>
 
     <!-- ===== Alerts ===== -->
-    <div class="mb-5">
+    <div class="mb-5" id="alerts">
       <h4 class="fw-bold mb-3 pb-2 border-bottom">Alerts</h4>
       <div class="row g-3">
         <div class="col-md-6">
@@ -929,7 +948,7 @@
     </div>
 
     <!-- ===== List, Badges & Progress ===== -->
-    <div class="mb-5">
+    <div class="mb-5" id="lists">
       <h4 class="fw-bold mb-3 pb-2 border-bottom">List, Badges &amp; Progress</h4>
       <div class="row g-4">
         <div class="col-md-6">
@@ -1216,7 +1235,7 @@
     </div>
 
     <!-- ===== Navigation ===== -->
-    <div class="mb-5">
+    <div class="mb-5" id="navigation">
       <h4 class="fw-bold mb-3 pb-2 border-bottom">Navigation</h4>
       <div class="row g-4">
         <div class="col-md-6">
@@ -1290,7 +1309,7 @@
     </div>
 
     <!-- ===== Typography ===== -->
-    <div class="mb-5">
+    <div class="mb-5" id="typography">
       <h4 class="fw-bold mb-3 pb-2 border-bottom">Typography</h4>
       <div class="row g-4">
         <div class="col-md-6">
@@ -1366,7 +1385,7 @@
     </div>
 
     <!-- ===== Accordion ===== -->
-    <div class="mb-5">
+    <div class="mb-5" id="accordion">
       <h4 class="fw-bold mb-3 pb-2 border-bottom">Accordion</h4>
       <div class="accordion shadow-sm" id="accordionDemo">
         <div class="accordion-item">
@@ -1414,7 +1433,7 @@
     </div>
 
     <!-- ===== Carousel ===== -->
-    <div class="mb-5">
+    <div class="mb-5" id="carousel">
       <h4 class="fw-bold mb-3 pb-2 border-bottom">Carousel</h4>
       <div id="carouselDemo" class="carousel slide shadow-sm rounded overflow-hidden" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -1464,7 +1483,7 @@
     </div>
 
     <!-- ===== Breadcrumb & Spinners ===== -->
-    <div class="mb-5">
+    <div class="mb-5" id="extras">
       <h4 class="fw-bold mb-3 pb-2 border-bottom">Breadcrumb &amp; Spinners</h4>
       <div class="row g-4">
         <div class="col-md-6">
@@ -1515,7 +1534,7 @@
     </div>
 
     <!-- ===== Interactive Components ===== -->
-    <div class="mb-5">
+    <div class="mb-5" id="interactive">
       <h4 class="fw-bold mb-3 pb-2 border-bottom">Interactive Components</h4>
       <div class="row g-4">
         <div class="col-md-6">
@@ -1548,7 +1567,7 @@
     </div>
 
     <!-- ===== Dropdowns ===== -->
-    <div class="mb-5">
+    <div class="mb-5" id="dropdowns">
       <h4 class="fw-bold mb-3 pb-2 border-bottom">Dropdowns</h4>
       <div class="d-flex flex-wrap gap-3 align-items-center">
         <div class="dropdown">
@@ -1592,7 +1611,7 @@
     </div>
 
     <!-- ===== Collapse ===== -->
-    <div class="mb-5">
+    <div class="mb-5" id="collapse">
       <h4 class="fw-bold mb-3 pb-2 border-bottom">Collapse</h4>
       <div class="d-flex flex-wrap gap-2 mb-3">
         <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
@@ -1633,7 +1652,7 @@
     </div>
 
     <!-- ===== Button Groups & Toolbar ===== -->
-    <div class="mb-5">
+    <div class="mb-5" id="toolbars">
       <h4 class="fw-bold mb-3 pb-2 border-bottom">Button Groups &amp; Toolbar</h4>
       <div class="btn-toolbar mb-4" role="toolbar">
         <div class="btn-group me-2" role="group">
@@ -1988,11 +2007,11 @@
       const allContainers = document.querySelectorAll('.custom-select-container');
       const container = document.getElementById(`${type}SelectContainer`);
       const dropdown = document.getElementById(`${type}Dropdown`);
-      
+
       const isOpen = dropdown.classList.contains('show');
-      
+
       closeAllCustomDropdowns();
-      
+
       if (!isOpen) {
         container.classList.add('open');
         dropdown.classList.add('show');
@@ -2092,9 +2111,9 @@
               triggerContent.innerHTML = `<span class="option-label">${label}</span>`;
             }
           } else {
-            const defaultLabels = { 
-              preset: 'Select a theme...', 
-              colors: 'Select colors...', 
+            const defaultLabels = {
+              preset: 'Select a theme...',
+              colors: 'Select colors...',
               fonts: 'Select fonts...',
               borders: 'Select border...',
               rounding: 'Select rounding...',
