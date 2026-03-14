@@ -27,7 +27,7 @@ This project is organized as a standalone module (`btdt/`) that can be easily dr
 3.  **Export**: Click **"Copy CSS Preset"** to get your `@import` code.
 4.  **Save & Link**: Save your design in `btdt/themes/preset/my-theme.css` and link it in your HTML.
 
-## ⚖️ BTDT vs. Bootswatch
+## BTDT vs. Bootswatch
 
 While **Bootswatch** is an industry standard for static themes, **BTDT** takes it to the next level by being a dynamic engine:
 
@@ -46,7 +46,7 @@ The application uses a **Modular CSS Injection** strategy managed by the `ThemeM
 2.  **Base Path Awareness**: The `ThemeManager` supports a `basePath` configuration, allowing it to find its theme modules regardless of where your HTML file is located.
 3.  **Zero-CORS Metadata**: Presets include invisible CSS variables that the engine reads via computed styles, enabling full editor sync even in local environments (`file://`).
 
-## 🚀 Pure CSS - No Compilation
+## Pure CSS - No Compilation
 
 Unlike many Bootstrap customization workflows that require complex SCSS/SASS setups, BTDT is built on **Pure CSS** using modern CSS custom properties (variables).
 
