@@ -30,6 +30,21 @@
   /* Links */
   --bs-link-color: #5b2a86;
   --bs-link-hover-color: #47206a;
+  --bs-navbar-icon-filter: invert(1) brightness(2);
+  --bs-navbar-brand-color:  inherit;
+  --bs-navbar-active-color: inherit;
+  --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Soporte para botones personalizados (clase "btn") dentro del navbar */
+.navbar.bg-primary button.btn {
+  background: transparent;
+  border: none;
+  color: inherit;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  box-shadow: none;
 }
 
 /* Buttons */
@@ -183,6 +198,63 @@
 }
 
 /* Cards */
+
+/* Nav links outside navbar (pills, tabs, breadcrumb...) */
+:not(.navbar) > .nav-link,
+.nav-tabs .nav-link,
+.nav-pills .nav-link {
+  color: #5b2a86;
+}
+
+/* ── Navbar — inherit text color from bg-* ─────────── */
+.navbar.bg-primary {
+  --bs-navbar-color:        inherit;
+  --bs-navbar-brand-color:  inherit;
+  --bs-navbar-active-color: inherit;
+  --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Soporte para botones personalizados (clase "btn") dentro del navbar */
+.navbar.bg-primary button.btn {
+  background: transparent;
+  border: none;
+  color: inherit;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  box-shadow: none;
+}
+
+.navbar-dark .navbar-nav .nav-link,
+.navbar[data-bs-theme="dark"] .navbar-nav .nav-link,
+.bg-primary .navbar-nav .nav-link {
+  color: inherit !important;
+}
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar[data-bs-theme="dark"] .navbar-nav .nav-link.active,
+.bg-primary .navbar-nav .nav-link.active {
+  color: inherit !important;
+}
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar[data-bs-theme="dark"] .navbar-nav .nav-link:hover,
+.bg-primary .navbar-nav .nav-link:hover {
+  color: inherit !important;
+}
+.navbar-dark .navbar-brand,
+.navbar[data-bs-theme="dark"] .navbar-brand,
+.bg-primary .navbar-brand {
+  color: inherit !important;
+}
+
+.navbar.bg-primary .navbar-toggler-icon {
+  filter: var(--bs-navbar-icon-filter, none);
+}
+
+.navbar-dark.bg-primary .navbar-toggler,
+.bg-primary .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
 .card { --bs-card-border-color: rgba(var(--bs-primary-rgb), 0.14); }
 
 /* Focus */
@@ -214,11 +286,6 @@
 
 /* Nav */
 .nav-pills .nav-link.active { background-color: var(--bs-primary); }
-:not(.navbar) > .nav-link,
-.nav-tabs .nav-link,
-.nav-pills .nav-link {
-  color: var(--bs-primary);
-}
 /* Navbar links */
 .navbar-dark .navbar-nav .nav-link,
 .navbar[data-bs-theme="dark"] .navbar-nav .nav-link,
@@ -240,7 +307,9 @@
 .bg-primary .navbar-brand {
   color: inherit !important;
 }
-
+.navbar.bg-primary .navbar-toggler-icon {
+  filter: var(--bs-navbar-icon-filter, none);
+}
 
 /* text-bg-* (Bootstrap) */
 .text-bg-success {

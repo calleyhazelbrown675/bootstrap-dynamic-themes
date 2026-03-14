@@ -19,10 +19,7 @@
 
   --bs-link-color: #7b2d8e;
   --bs-link-hover-color: #5e2170;
-}
-
-.btn-primary {
-  --bs-btn-bg: #7b2d8e;
+  --bs-navbar-icon-filter: invert(1) brightness(2);
   --bs-btn-border-color: #7b2d8e;
   --bs-btn-hover-bg: #5e2170;
   --bs-btn-hover-border-color: #5e2170;
@@ -82,13 +79,33 @@
   border-color: #7b2d8e;
 }
 .nav-pills .nav-link.active { background-color: #7b2d8e; }
+
 /* Nav links outside navbar (pills, tabs, breadcrumb...) */
 :not(.navbar) > .nav-link,
 .nav-tabs .nav-link,
 .nav-pills .nav-link {
   color: #7b2d8e;
 }
-/* Navbar: always white text on primary background */
+
+/* ── Navbar — inherit text color from bg-* ─────────── */
+.navbar.bg-primary {
+  --bs-navbar-color:        inherit;
+  --bs-navbar-brand-color:  inherit;
+  --bs-navbar-active-color: inherit;
+  --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Soporte para botones personalizados (clase "btn") dentro del navbar */
+.navbar.bg-primary button.btn {
+  background: transparent;
+  border: none;
+  color: inherit;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  box-shadow: none;
+}
+
 .navbar-dark .navbar-nav .nav-link,
 .navbar[data-bs-theme="dark"] .navbar-nav .nav-link,
 .bg-primary .navbar-nav .nav-link {
@@ -108,6 +125,15 @@
 .navbar[data-bs-theme="dark"] .navbar-brand,
 .bg-primary .navbar-brand {
   color: inherit !important;
+}
+
+.navbar.bg-primary .navbar-toggler-icon {
+  filter: var(--bs-navbar-icon-filter, none);
+}
+
+.navbar-dark.bg-primary .navbar-toggler,
+.bg-primary .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .progress-bar { background-color: #7b2d8e; }

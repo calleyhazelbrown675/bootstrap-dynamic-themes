@@ -32,6 +32,7 @@
   --bs-link-hover-color: #004494;
 
   --bs-border-color: #f2f2f2;
+  --bs-navbar-icon-filter: none;
 }
 
 /* ── Buttons ─────────────────────────────────────────────────── */
@@ -117,14 +118,33 @@
   background-color: #f2f2f2;
   color: #212121;
 }
-/* Nav links outside navbar */
+
+/* Nav links outside navbar (pills, tabs, breadcrumb...) */
 :not(.navbar) > .nav-link,
 .nav-tabs .nav-link,
 .nav-pills .nav-link {
   color: #0056b3;
 }
 
-/* ── Light gray navbar — dark text ────────────────────────── */
+/* ── Navbar — inherit text color from bg-* ─────────── */
+.navbar.bg-primary {
+  --bs-navbar-color:        inherit;
+  --bs-navbar-brand-color:  inherit;
+  --bs-navbar-active-color: inherit;
+  --bs-navbar-toggler-border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Soporte para botones personalizados (clase "btn") dentro del navbar */
+.navbar.bg-primary button.btn {
+  background: transparent;
+  border: none;
+  color: inherit;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  box-shadow: none;
+}
+
 .navbar-dark .navbar-nav .nav-link,
 .navbar[data-bs-theme="dark"] .navbar-nav .nav-link,
 .bg-primary .navbar-nav .nav-link {
@@ -145,31 +165,14 @@
 .bg-primary .navbar-brand {
   color: inherit !important;
 }
-/* Search input and button in light gray navbar */
-.navbar-dark.bg-primary .form-control,
-.bg-primary .form-control {
-  border-color: rgba(0,0,0,0.2);
-  color: inherit;
-  background-color: rgba(255,255,255,0.5);
+
+.navbar.bg-primary .navbar-toggler-icon {
+  filter: var(--bs-navbar-icon-filter, none);
 }
-.navbar-dark.bg-primary .btn-outline-light,
-.bg-primary .btn-outline-light {
-  color: inherit;
-  border-color: rgba(0,0,0,0.25);
-}
-.navbar-dark.bg-primary .btn-outline-light:hover,
-.bg-primary .btn-outline-light:hover {
-  background-color: rgba(0,0,0,0.1);
-  color: inherit;
-}
-/* Dark toggler icon */
-.navbar-dark.bg-primary .navbar-toggler-icon,
-.bg-primary .navbar-toggler-icon {
-  filter: invert(0) brightness(0.2);
-}
+
 .navbar-dark.bg-primary .navbar-toggler,
 .bg-primary .navbar-toggler {
-  border-color: rgba(0,0,0,0.2);
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 .progress-bar { background-color: #9e9e9e; }
@@ -303,14 +306,7 @@
 }
 
 /* Garantizar legibilidad de enlaces en contenedores con fondo (excluyendo navbar) */
-[class*="bg-"]:not(.navbar) a:not(.btn):not(.nav-link),
-[class*="text-bg-"]:not(.navbar) a:not(.btn):not(.nav-link) {
-  color: inherit !important;
-  text-decoration: underline;
-}
-
-/* Ensure links with light/white utility classes are visible in this gray theme */
+[class*="bg-"]/* Ensure links with light/white utility classes are visible in this gray theme */
 a.text-light, a.text-white, a.link-light {
   color: #0056b3 !important;
 }
-

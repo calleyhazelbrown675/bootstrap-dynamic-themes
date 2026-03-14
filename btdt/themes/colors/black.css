@@ -27,6 +27,7 @@
   --bs-link-hover-color: #000000;
 
   --bs-border-color: #424242;
+  --bs-navbar-icon-filter: invert(1) brightness(2);
 }
 
 /* ── Buttons ─────────────────────────────────────────────────── */
@@ -113,13 +114,33 @@
   color: #fff;
 }
 /* Nav links outside navbar */
+
+/* Nav links outside navbar (pills, tabs, breadcrumb...) */
 :not(.navbar) > .nav-link,
 .nav-tabs .nav-link,
 .nav-pills .nav-link {
   color: #212121;
 }
 
-/* ── Navbar negro — texto claro para contraste ───────────────── */
+/* ── Navbar — inherit text color from bg-* ─────────── */
+.navbar.bg-primary {
+  --bs-navbar-color:        inherit;
+  --bs-navbar-brand-color:  inherit;
+  --bs-navbar-active-color: inherit;
+  --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Soporte para botones personalizados (clase "btn") dentro del navbar */
+.navbar.bg-primary button.btn {
+  background: transparent;
+  border: none;
+  color: inherit;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  box-shadow: none;
+}
+
 .navbar-dark .navbar-nav .nav-link,
 .navbar[data-bs-theme="dark"] .navbar-nav .nav-link,
 .bg-primary .navbar-nav .nav-link {
@@ -140,31 +161,14 @@
 .bg-primary .navbar-brand {
   color: inherit !important;
 }
-/* Search input y botón en navbar negro */
-.navbar-dark.bg-primary .form-control,
-.bg-primary .form-control {
-  border-color: rgba(255,255,255,0.35);
-  color: inherit;
-  background-color: rgba(0,0,0,0.12);
+
+.navbar.bg-primary .navbar-toggler-icon {
+  filter: var(--bs-navbar-icon-filter, none);
 }
-.navbar-dark.bg-primary .btn-outline-light,
-.bg-primary .btn-outline-light {
-  color: inherit;
-  border-color: rgba(255,255,255,0.45);
-}
-.navbar-dark.bg-primary .btn-outline-light:hover,
-.bg-primary .btn-outline-light:hover {
-  background-color: rgba(255,255,255,0.18);
-  color: inherit;
-}
-/* Toggler icon claro */
-.navbar-dark.bg-primary .navbar-toggler-icon,
-.bg-primary .navbar-toggler-icon {
-  filter: invert(1) brightness(1.1);
-}
+
 .navbar-dark.bg-primary .navbar-toggler,
 .bg-primary .navbar-toggler {
-  border-color: rgba(255,255,255,0.45);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .progress-bar { background-color: #212121; }
