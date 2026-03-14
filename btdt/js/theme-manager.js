@@ -9,35 +9,26 @@ class ThemeManager {
       this.basePath += '/';
     }
 
+    // Configuration from external files or defaults
+    const colors = window.BTDT_COLORS || {};
+    const fonts = window.BTDT_FONTS || {};
+    const ui = window.BTDT_UI || {};
+
     // Available theme categories
     this.categories = {
-      colors: [
-        'ocean', 'sunset', 'forest',
-        'lavender', 'corporate', 'candy',
-        'white', 'gray-light', 'black', 'teal', 'rose', 'amber', 'mint', 'peach', 'sky',
-        'nord', 'desert', 'plum',
-        'midnight', 'volcano', 'olive', 'orchid',
-        'arctic', 'citrus', 'coffee', 'gold',
-        'slate', 'ink', 'neon', 'tropical'
+      colors: Object.keys(colors).length ? Object.keys(colors) : [
+        'ocean', 'sunset', 'forest', 'lavender', 'corporate', 'candy',
+        'white', 'gray-light', 'black', 'teal', 'rose', 'amber', 'mint', 'peach', 'sky'
       ],
-      fonts: [
-        'inter', 'merriweather', 'nunito', 'jetbrains-mono',
-        'playfair-display', 'roboto-slab', 'quicksand', 'oswald',
-        'montserrat', 'poppins', 'roboto', 'lora', 'raleway', 'fira-sans',
-        'dm-sans', 'pt-serif', 'neucha', 'cabin-sketch', 'alfa-slab-one', 'bebas-neue',
-        'open-sans', 'lato', 'source-sans-pro', 'ubuntu', 'work-sans', 'manrope',
-        'josefin-sans', 'jost', 'outfit', 'lexend', 'crimson-text', 'eb-garamond',
-        'libre-baskerville', 'cormorant-garamond', 'bitter', 'cardo', 'spectral',
-        'lobster', 'pacifico', 'comfortaa', 'fredoka-one', 'righteous', 'abril-fatface',
-        'cinzel', 'kaushan-script', 'roboto-mono', 'fira-code', 'source-code-pro',
-        'space-mono', 'inconsolata', 'syne', 'space-grotesk', 'architects-daughter'
+      fonts: Object.keys(fonts).length ? Object.keys(fonts) : [
+        'inter', 'merriweather', 'nunito', 'jetbrains-mono'
       ],
-      borders: ['normal', 'extra', 'none'],
-      rounding: ['normal', 'extra', 'none'],
-      shadows: ['normal', 'extra', 'none'],
-      spacing: ['normal', 'large', 'small'],
-      gradients: ['on', 'off'],
-      accent: ['none', 'left', 'right', 'top', 'bottom']
+      borders: Object.keys(ui.borders || {}).length ? Object.keys(ui.borders) : ['normal', 'extra', 'none'],
+      rounding: Object.keys(ui.rounding || {}).length ? Object.keys(ui.rounding) : ['normal', 'extra', 'none'],
+      shadows: Object.keys(ui.shadows || {}).length ? Object.keys(ui.shadows) : ['normal', 'extra', 'none'],
+      spacing: Object.keys(ui.spacing || {}).length ? Object.keys(ui.spacing) : ['normal', 'large', 'small'],
+      gradients: Object.keys(ui.gradients || {}).length ? Object.keys(ui.gradients) : ['on', 'off'],
+      accent: Object.keys(ui.accent || {}).length ? Object.keys(ui.accent) : ['none', 'left', 'right', 'top', 'bottom']
     };
 
     // Available modes
@@ -48,23 +39,13 @@ class ThemeManager {
 
     // Current active theme
     this.activeTheme = {
-      colors: null,
-      fonts: null,
-      borders: null,
-      rounding: null,
-      shadows: null,
-      spacing: null,
-      gradients: null,
-      accent: null
+      colors: null, fonts: null, borders: null, rounding: null,
+      shadows: null, spacing: null, gradients: null, accent: null
     };
 
     // Predefined presets
-    // List of available presets (filenames in themes/preset/)
-    this.presets = [
-      'studio', 'aurora', 'paper', 'retro',
-      'noir', 'citrus', 'calm', 'wild',
-      'sunset', 'neon', 'candy', 'forest', 'default'
-    ];
+    const presetData = window.BTDT_PRESETS || {};
+    this.presets = Object.keys(presetData).length ? Object.keys(presetData) : ['default'];
 
     // Cache buster for theme CSS. Helps when iterating on theme files.
     this._cacheBust = String(Date.now());

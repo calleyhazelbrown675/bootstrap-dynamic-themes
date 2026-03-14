@@ -21,6 +21,11 @@ Map the font family to the following variables:
 ### 3. Fallbacks
 Always include standard system fallbacks (e.g., `sans-serif`, `serif`, `monospace`) to ensure a graceful degradation.
 
+### 4. Metadata Update (CRITICAL)
+After creating the CSS file, you MUST add the new font metadata to `btdt/js/config-fonts.js`.
+- Add a new entry with the font ID and its human-readable label.
+- This ensures the font appears in the editor's custom select dropdown with its correct preview.
+
 ## Example Reference
 ```css
 /* btdt/themes/fonts/inter.css */

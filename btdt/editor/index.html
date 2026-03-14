@@ -1838,6 +1838,12 @@
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+  <!-- BTDT Configuration -->
+  <script src="../js/config-colors.js"></script>
+  <script src="../js/config-fonts.js"></script>
+  <script src="../js/config-presets.js"></script>
+  <script src="../js/config-ui.js"></script>
+
   <!-- Theme Manager -->
   <script src="../js/theme-manager.js"></script>
 
@@ -1845,120 +1851,13 @@
     // Initialize ThemeManager for the editor (moves up from /editor/ folder)
     window.themeManager = new ThemeManager({ basePath: '../' });
 
-    // ===== Color swatches definition =====
-    const colorSwatches = {
-      ocean: { primary: '#0077b6', secondary: '#48cae4', accent: '#06d6a0' },
-      sunset: { primary: '#e63946', secondary: '#f4845f', accent: '#f7b801' },
-      forest: { primary: '#2d6a4f', secondary: '#52b788', accent: '#dda15e' },
-      lavender: { primary: '#7b2d8e', secondary: '#b185db', accent: '#9b72cf' },
-      corporate: { primary: '#1e3a5f', secondary: '#4a6fa5', accent: '#3182ce' },
-      candy: { primary: '#e91e8c', secondary: '#7c4dff', accent: '#00b0ff' },
-      white: { primary: '#ffffff', secondary: '#f5f5f5', accent: '#bdbdbd' },
-      'gray-light': { primary: '#bdbdbd', secondary: '#d0d0d0', accent: '#9e9e9e' },
-      'black': { primary: '#212121', secondary: '#424242', accent: '#616161' },
-      'teal': { primary: '#008080', secondary: '#20c997', accent: '#17a2b8' },
-      'rose': { primary: '#e83e8c', secondary: '#f06595', accent: '#ff6b9d' },
-      'amber': { primary: '#ff8f00', secondary: '#ffb300', accent: '#ffc107' },
-      'mint': { primary: '#4db6ac', secondary: '#80cbc4', accent: '#b2dfdb' },
-      'peach': { primary: '#ffab91', secondary: '#ffccbc', accent: '#ffe0b2' },
-      'sky': { primary: '#81d4fa', secondary: '#b3e5fc', accent: '#e1f5fe' },
-      nord: { primary: '#2e3440', secondary: '#5e81ac', accent: '#88c0d0' },
-      desert: { primary: '#c26e2b', secondary: '#e0a458', accent: '#f2cc8f' },
-      plum: { primary: '#5b2a86', secondary: '#a06cd5', accent: '#2f9c95' },
-      midnight: { primary: '#0f172a', secondary: '#2563eb', accent: '#0ea5e9' },
-      volcano: { primary: '#b91c1c', secondary: '#ea580c', accent: '#fbbf24' },
-      olive: { primary: '#3f6212', secondary: '#84cc16', accent: '#0ea5a4' },
-      orchid: { primary: '#6d28d9', secondary: '#ec4899', accent: '#06b6d4' },
-      arctic: { primary: '#0369a1', secondary: '#22d3ee', accent: '#14b8a6' },
-      citrus: { primary: '#65a30d', secondary: '#f59e0b', accent: '#84cc16' },
-      coffee: { primary: '#6f4e37', secondary: '#c0895e', accent: '#8d6e63' },
-      gold: { primary: '#a16207', secondary: '#fbbf24', accent: '#b45309' },
-      slate: { primary: '#334155', secondary: '#64748b', accent: '#0ea5e9' },
-      ink: { primary: '#1f2937', secondary: '#7c3aed', accent: '#06b6d4' },
-      neon: { primary: '#00c2ff', secondary: '#b6ff00', accent: '#ff2d55' },
-      tropical: { primary: '#0ea5a4', secondary: '#f97316', accent: '#3b82f6' }
-    };
-
-    // ===== Human-readable labels for options =====
+    // Shortcuts to global configs
+    const colorSwatches = window.BTDT_COLORS;
     const labels = {
-      fonts: {
-        inter: 'Inter',
-        merriweather: 'Merriweather',
-        nunito: 'Nunito',
-        'jetbrains-mono': 'JetBrains Mono',
-        'playfair-display': 'Playfair Display',
-        'roboto-slab': 'Roboto Slab',
-        quicksand: 'Quicksand',
-        oswald: 'Oswald',
-        montserrat: 'Montserrat',
-        poppins: 'Poppins',
-        roboto: 'Roboto',
-        lora: 'Lora',
-        raleway: 'Raleway',
-        'fira-sans': 'Fira Sans',
-        'dm-sans': 'DM Sans',
-        'pt-serif': 'PT Serif',
-        neucha: 'Neucha',
-        'cabin-sketch': 'Cabin Sketch',
-        'alfa-slab-one': 'Alfa Slab One',
-        'bebas-neue': 'Bebas Neue',
-        'open-sans': 'Open Sans',
-        lato: 'Lato',
-        'source-sans-pro': 'Source Sans Pro',
-        ubuntu: 'Ubuntu',
-        'work-sans': 'Work Sans',
-        manrope: 'Manrope',
-        'josefin-sans': 'Josefin Sans',
-        jost: 'Jost',
-        outfit: 'Outfit',
-        lexend: 'Lexend',
-        'crimson-text': 'Crimson Text',
-        'eb-garamond': 'EB Garamond',
-        'libre-baskerville': 'Libre Baskerville',
-        'cormorant-garamond': 'Cormorant Garamond',
-        bitter: 'Bitter',
-        cardo: 'Cardo',
-        spectral: 'Spectral',
-        lobster: 'Lobster',
-        pacifico: 'Pacifico',
-        comfortaa: 'Comfortaa',
-        'fredoka-one': 'Fredoka One',
-        righteous: 'Righteous',
-        'abril-fatface': 'Abril Fatface',
-        cinzel: 'Cinzel',
-        'kaushan-script': 'Kaushan Script',
-        'roboto-mono': 'Roboto Mono',
-        'fira-code': 'Fira Code',
-        'source-code-pro': 'Source Code Pro',
-        'space-mono': 'Space Mono',
-        inconsolata: 'Inconsolata',
-        syne: 'Syne',
-        'space-grotesk': 'Space Grotesk',
-        'architects-daughter': 'Architects Daughter'
-      },
-      borders: { normal: 'Normal', extra: 'Thick', none: 'None' },
-      rounding: { normal: 'Normal', extra: 'Extra', none: 'Sharp' },
-      shadows: { normal: 'Normal', extra: 'Extra', none: 'None' },
-      spacing: { normal: 'Normal', large: 'Large', small: 'Compact' },
-      gradients: { on: 'Yes', off: 'No' },
-      accent: { none: 'None', left: 'Left', right: 'Right', top: 'Top', bottom: 'Bottom' }
+      fonts: window.BTDT_FONTS,
+      ...window.BTDT_UI
     };
-
-    // ===== Preset metadata (panel-only UI) =====
-    const presetMeta = {
-      studio: { title: 'Studio', color: 'corporate' },
-      aurora: { title: 'Aurora', color: 'ocean' },
-      paper: { title: 'Paper', color: 'white' },
-      retro: { title: 'Retro', color: 'peach' },
-      noir: { title: 'Noir', color: 'ink' },
-      citrus: { title: 'Citrus', color: 'citrus' },
-      calm: { title: 'Calm', color: 'arctic' },
-      wild: { title: 'Wild', color: 'tropical' },
-      sunset: { title: 'Sunset', color: 'sunset' },
-      neon: { title: 'Neon', color: 'neon' },
-      candy: { title: 'Candy', color: 'candy' },
-      forest: { title: 'Forest', color: 'forest' }
-    };
+    const presetMeta = window.BTDT_PRESETS;
 
     // ===== Build the panel dynamically =====
     function buildPanel() {

@@ -16,6 +16,11 @@ Include `@import` statements for exactly one module from each relevant category 
 ### 2. Zero-CORS Metadata Block
 Append a `:root` block at the end of the file containing `--preset-[category]` variables. These MUST match the values in the `ThemeManager.js`.
 
+### 3. Metadata Update (CRITICAL)
+After creating the CSS file, you MUST add the new preset metadata to `btdt/js/config-presets.js`.
+- Add a new entry with the preset ID, a human-readable title, and the ID of the primary color palette it use (for the visual swatch in the dropdown).
+- This ensures the preset appears in the editor's custom select dropdown.
+
 ## Example Reference
 ```css
 /* btdt/themes/preset/studio.css */

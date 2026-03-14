@@ -23,6 +23,11 @@ Target `.card` shadows or generic utility shadows. Use subtle `rgba` colors for 
 ### 4. Gradient/Glassmorphism
 Apply translucent backgrounds and backdrop filters for modern "Glass" effects.
 
+### 5. Metadata Update (CRITICAL)
+If you add a NEW value to an existing category (or a new category), you MUST update `btdt/js/config-ui.js`.
+- Add the new value and its human-readable label to the appropriate object.
+- This ensures the UI buttons or selectors reflect the new option.
+
 ## Example Reference
 ```css
 /* btdt/themes/styles/rounding-extra.css */

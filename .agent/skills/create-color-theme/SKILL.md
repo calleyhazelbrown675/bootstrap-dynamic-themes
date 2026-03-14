@@ -24,7 +24,12 @@ Customize `.btn-primary` and `.btn-secondary` to match the palette. Ensure text 
 ### 3. Utility Classes
 Define `.bg-primary`, `.bg-secondary`, `.text-primary`, and `.text-secondary`.
 
-### 4. Accessibility & Legibility (Crucial)
+### 4. Metadata Update (CRITICAL)
+After creating the CSS file, you MUST add the new theme metadata to `btdt/js/config-colors.js`.
+- Add a new entry with the theme ID and its primary, secondary, and accent colors (hex values).
+- This ensures the editor can display the color swatch in the new custom select dropdown.
+
+### 5. Accessibility & Legibility (Crucial)
 To ensure links remain visible in different backgrounds, always include this block at the end of the file:
 
 ```css
