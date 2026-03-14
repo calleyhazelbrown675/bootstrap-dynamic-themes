@@ -35,6 +35,7 @@
             </ul>
           </li>
           <li class="nav-item"><a class="nav-link" href="#showcase">Showcase</a></li>
+          <li class="nav-item"><a class="nav-link" href="#screenshots">Screenshots</a></li>
           <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
           <li class="nav-item"><a class="nav-link" href="#how-it-works">How it Works</a></li>
         </ul>
@@ -143,18 +144,20 @@
     </div>
   </header>
 
-  <!-- ======================== THEME STRIP ======================== -->
-  <section class="bg-light py-3 border-bottom">
-    <div class="container">
-      <div class="d-flex justify-content-center align-items-center gap-2 flex-wrap">
-        <small class="text-muted">
-          <strong>👆 Try it:</strong> Select a theme from the <em>Themes</em> dropdown — every element on this page
-          transforms instantly.
-        </small>
-        <span class="badge bg-primary rounded-pill px-3" id="currentThemeBadge">Nordic Elegance</span>
+  <main>
+    <!-- ======================== THEME STRIP ======================== -->
+    <section class="bg-light py-3 border-bottom" aria-labelledby="theme-strip-title">
+      <div class="container">
+        <h2 id="theme-strip-title" class="visually-hidden">Quick Theme Preview Info</h2>
+        <div class="d-flex justify-content-center align-items-center gap-2 flex-wrap">
+          <small class="text-muted">
+            <strong>👆 Try it:</strong> Select a theme from the <em>Themes</em> dropdown — every element on this page
+            transforms instantly.
+          </small>
+          <span class="badge bg-primary rounded-pill px-3" id="currentThemeBadge">Nordic Elegance</span>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
   <!-- ======================== LIVE SHOWCASE ======================== -->
   <section class="py-5 bg-white" id="showcase">
@@ -169,10 +172,10 @@
       <!-- Row 1 – Buttons & Badges / Progress -->
       <div class="row g-4 mb-5">
         <div class="col-lg-8">
-          <div class="card border-0 shadow-sm h-100">
+          <article class="card border-0 shadow-sm h-100">
             <div class="card-body p-4">
-              <h6 class="text-uppercase text-muted fw-bold small mb-3"
-                style="letter-spacing:.1em">Buttons</h6>
+              <h3 class="text-uppercase text-muted fw-bold small mb-3"
+                style="letter-spacing:.1em">Buttons</h3>
               <div class="d-flex flex-wrap gap-2 mb-3">
                 <button class="btn btn-primary">Primary</button>
                 <button class="btn btn-secondary">Secondary</button>
@@ -192,13 +195,13 @@
                 <button class="btn btn-outline-info btn-sm">Info</button>
               </div>
             </div>
-          </div>
+          </article>
         </div>
         <div class="col-lg-4">
-          <div class="card border-0 shadow-sm h-100">
+          <article class="card border-0 shadow-sm h-100">
             <div class="card-body p-4">
-              <h6 class="text-uppercase text-muted fw-bold small mb-3"
-                style="letter-spacing:.1em">Badges</h6>
+              <h3 class="text-uppercase text-muted fw-bold small mb-3"
+                style="letter-spacing:.1em">Badges</h3>
               <div class="d-flex flex-wrap gap-2 mb-4">
                 <span class="badge bg-primary">Primary</span>
                 <span class="badge bg-secondary">Secondary</span>
@@ -207,29 +210,29 @@
                 <span class="badge bg-warning text-dark">Warning</span>
                 <span class="badge bg-info">Info</span>
               </div>
-              <h6 class="text-uppercase text-muted fw-bold small mb-3"
-                style="letter-spacing:.1em">Progress</h6>
-              <div class="progress mb-2" style="height:8px">
+              <h3 class="text-uppercase text-muted fw-bold small mb-3"
+                style="letter-spacing:.1em">Progress</h3>
+              <div class="progress mb-2" style="height:8px" aria-label="Example Progress 75%">
                 <div class="progress-bar" style="width:75%"></div>
               </div>
-              <div class="progress mb-2" style="height:8px">
+              <div class="progress mb-2" style="height:8px" aria-label="Example Progress 50%">
                 <div class="progress-bar bg-success" style="width:50%"></div>
               </div>
-              <div class="progress" style="height:8px">
+              <div class="progress" style="height:8px" aria-label="Example Progress 30%">
                 <div class="progress-bar bg-warning" style="width:30%"></div>
               </div>
             </div>
-          </div>
+          </article>
         </div>
       </div>
 
       <!-- Row 2 – Example Cards -->
       <div class="row g-4 mb-5">
         <div class="col-md-4">
-          <div class="card border-0 shadow-sm h-100">
+          <article class="card border-0 shadow-sm h-100">
             <div class="card-body p-4">
               <div class="bg-primary bg-opacity-10 rounded-3 d-flex align-items-center justify-content-center mb-3"
-                style="height:120px">
+                style="height:120px" aria-hidden="true">
                 <span class="display-4">🎨</span>
               </div>
               <h5 class="card-title fw-bold">Color Palettes</h5>
@@ -237,23 +240,23 @@
                 own.</p>
               <a href="editor/index.html" class="btn btn-primary btn-sm">Explore</a>
             </div>
-          </div>
+          </article>
         </div>
         <div class="col-md-4">
-          <div class="card border-primary border-2 shadow-sm h-100">
+          <article class="card border-primary border-2 shadow-sm h-100">
             <div class="card-header bg-primary text-white fw-bold py-3">⭐ Featured</div>
             <div class="card-body p-4">
               <h5 class="card-title fw-bold">Visual Designer</h5>
               <p class="card-text text-muted small">Real-time theme editor with instant preview. No coding required.</p>
               <a href="editor/index.html" class="btn btn-outline-primary btn-sm">Try Now</a>
             </div>
-          </div>
+          </article>
         </div>
         <div class="col-md-4">
-          <div class="card border-0 shadow-sm h-100">
+          <article class="card border-0 shadow-sm h-100">
             <div class="card-body p-4">
               <div class="bg-success bg-opacity-10 rounded-3 d-flex align-items-center justify-content-center mb-3"
-                style="height:120px">
+                style="height:120px" aria-hidden="true">
                 <span class="display-4">📦</span>
               </div>
               <h5 class="card-title fw-bold">Easy Export</h5>
@@ -261,17 +264,17 @@
                 done.</p>
               <a href="#how-it-works" class="btn btn-success btn-sm">Learn More</a>
             </div>
-          </div>
+          </article>
         </div>
       </div>
 
       <!-- Row 3 – Form & Alerts -->
       <div class="row g-4 mb-5">
         <div class="col-lg-6">
-          <div class="card border-0 shadow-sm h-100">
+          <article class="card border-0 shadow-sm h-100">
             <div class="card-body p-4">
-              <h6 class="text-uppercase text-muted fw-bold small mb-3"
-                style="letter-spacing:.1em">Form Elements</h6>
+              <h3 class="text-uppercase text-muted fw-bold small mb-3"
+                style="letter-spacing:.1em">Form Elements</h3>
               <div class="mb-3">
                 <label class="form-label small fw-semibold">Email address</label>
                 <input type="email" class="form-control" placeholder="name@example.com">
@@ -286,7 +289,7 @@
               </div>
               <div class="mb-3">
                 <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" checked id="demoSwitch">
+                  <input class="form-check-input" type="checkbox" checked id="demoSwitch" aria-checked="true">
                   <label class="form-check-label small" for="demoSwitch">Enable dark mode</label>
                 </div>
               </div>
@@ -295,38 +298,39 @@
                 <button class="btn btn-outline-secondary btn-sm">Cancel</button>
               </div>
             </div>
-          </div>
+          </article>
         </div>
         <div class="col-lg-6">
-          <div class="card border-0 shadow-sm h-100">
+          <article class="card border-0 shadow-sm h-100">
             <div class="card-body p-4">
-              <h6 class="text-uppercase text-muted fw-bold small mb-3"
-                style="letter-spacing:.1em">Alerts</h6>
-              <div class="alert alert-primary py-2 small"><strong>Primary:</strong> A simple primary alert.</div>
-              <div class="alert alert-success py-2 small"><strong>Success:</strong> Operation completed!</div>
-              <div class="alert alert-warning py-2 small"><strong>Warning:</strong> Please review before continuing.
+              <h3 class="text-uppercase text-muted fw-bold small mb-3"
+                style="letter-spacing:.1em">Alerts</h3>
+              <div class="alert alert-primary py-2 small" role="alert"><strong>Primary:</strong> A simple primary alert.</div>
+              <div class="alert alert-success py-2 small" role="alert"><strong>Success:</strong> Operation completed!</div>
+              <div class="alert alert-warning py-2 small" role="alert"><strong>Warning:</strong> Please review before continuing.
               </div>
-              <div class="alert alert-danger py-2 small mb-0"><strong>Danger:</strong> An error has occurred.</div>
+              <div class="alert alert-danger py-2 small mb-0" role="alert"><strong>Danger:</strong> An error has occurred.</div>
             </div>
-          </div>
+          </article>
         </div>
       </div>
 
       <!-- Row 4 – Table & List-group / Pagination -->
       <div class="row g-4">
         <div class="col-lg-7">
-          <div class="card border-0 shadow-sm h-100">
+          <article class="card border-0 shadow-sm h-100">
             <div class="card-body p-4">
-              <h6 class="text-uppercase text-muted fw-bold small mb-3"
-                style="letter-spacing:.1em">Table</h6>
+              <h3 class="text-uppercase text-muted fw-bold small mb-3"
+                style="letter-spacing:.1em">Table</h3>
               <div class="table-responsive">
                 <table class="table table-striped table-hover align-middle mb-0">
+                  <caption class="visually-hidden">Themes and Categories comparison table</caption>
                   <thead>
                     <tr>
-                      <th>#</th>
-                      <th>Theme</th>
-                      <th>Category</th>
-                      <th>Status</th>
+                      <th scope="col">#</th>
+                      <th scope="col">Theme</th>
+                      <th scope="col">Category</th>
+                      <th scope="col">Status</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -352,20 +356,20 @@
                 </table>
               </div>
             </div>
-          </div>
+          </article>
         </div>
         <div class="col-lg-5">
-          <div class="card border-0 shadow-sm h-100">
+          <article class="card border-0 shadow-sm h-100">
             <div class="card-body p-4">
-              <h6 class="text-uppercase text-muted fw-bold small mb-3"
-                style="letter-spacing:.1em">List Group</h6>
+              <h3 class="text-uppercase text-muted fw-bold small mb-3"
+                style="letter-spacing:.1em">List Group</h3>
               <div class="list-group list-group-flush mb-4">
                 <a href="#"
                   class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                   Color Palettes <span class="badge bg-primary rounded-pill">30+</span>
                 </a>
                 <a href="#"
-                  class="list-group-item list-group-item-action d-flex justify-content-between align-items-center active">
+                  class="list-group-item list-group-item-action d-flex justify-content-between align-items-center active" aria-current="true">
                   Font Families <span class="badge bg-white text-primary rounded-pill">20+</span>
                 </a>
                 <a href="#"
@@ -373,19 +377,65 @@
                   Structural Styles <span class="badge bg-primary rounded-pill">10+</span>
                 </a>
               </div>
-              <h6 class="text-uppercase text-muted fw-bold small mb-3"
-                style="letter-spacing:.1em">Pagination</h6>
+              <h3 class="text-uppercase text-muted fw-bold small mb-3"
+                style="letter-spacing:.1em">Pagination</h3>
               <nav aria-label="Demo pagination">
                 <ul class="pagination pagination-sm mb-0">
-                  <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                  <li class="page-item"><a class="page-link" href="#" aria-label="Previous">&laquo;</a></li>
                   <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
                   <li class="page-item"><a class="page-link" href="#">2</a></li>
                   <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                  <li class="page-item"><a class="page-link" href="#" aria-label="Next">&raquo;</a></li>
                 </ul>
               </nav>
             </div>
-          </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== SCREENSHOTS ======================== -->
+  <section class="py-5 bg-white border-top mb-4" id="screenshots">
+    <div class="container py-4">
+      <div class="text-center mb-5">
+        <h2 class="display-5 fw-bold mb-3">Some screenshots</h2>
+        <p class="lead text-muted mx-auto" style="max-width:600px">
+          Take a look at how different presets transform the entire visual experience.
+        </p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <figure class="card border-0 shadow-sm overflow-hidden rounded-4 mb-0">
+            <img src="img/nordic.jpg" class="card-img-top" alt="Nordic Elegance Theme Screenshot">
+            <figcaption class="card-body bg-light py-2 text-center">
+              <small class="fw-bold text-uppercase text-muted" style="font-size: 0.75rem;">Nordic Elegance</small>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="col-md-6">
+          <figure class="card border-0 shadow-sm overflow-hidden rounded-4 mb-0">
+            <img src="img/candy.jpg" class="card-img-top" alt="Candy Pop Theme Screenshot">
+            <figcaption class="card-body bg-light py-2 text-center">
+              <small class="fw-bold text-uppercase text-muted" style="font-size: 0.75rem;">Candy Pop</small>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="col-md-6">
+          <figure class="card border-0 shadow-sm overflow-hidden rounded-4 mb-0">
+            <img src="img/retro.jpg" class="card-img-top" alt="Retro Classic Theme Screenshot">
+            <figcaption class="card-body bg-light py-2 text-center">
+              <small class="fw-bold text-uppercase text-muted" style="font-size: 0.75rem;">Retro Classic</small>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="col-md-6">
+          <figure class="card border-0 shadow-sm overflow-hidden rounded-4 mb-0">
+            <img src="img/studio.jpg" class="card-img-top" alt="Studio Dark Theme Screenshot">
+            <figcaption class="card-body bg-light py-2 text-center">
+              <small class="fw-bold text-uppercase text-muted" style="font-size: 0.75rem;">Studio Dark</small>
+            </figcaption>
+          </figure>
         </div>
       </div>
     </div>
@@ -400,64 +450,64 @@
       </div>
       <div class="row g-4">
         <div class="col-md-6 col-lg-4">
-          <div class="card h-100 border-0 shadow-sm rounded-4">
+          <article class="card h-100 border-0 shadow-sm rounded-4">
             <div class="card-body p-4">
-              <div class="display-5 mb-3">⚡</div>
+              <div class="display-5 mb-3" aria-hidden="true">⚡</div>
               <h5 class="fw-bold">No SCSS Required</h5>
               <p class="text-muted small mb-0">Forget Ruby, Node, or build steps. Pure CSS custom properties for
                 instant styling.</p>
             </div>
-          </div>
+          </article>
         </div>
         <div class="col-md-6 col-lg-4">
-          <div class="card h-100 border-0 shadow-sm rounded-4">
+          <article class="card h-100 border-0 shadow-sm rounded-4">
             <div class="card-body p-4">
-              <div class="display-5 mb-3">🌗</div>
+              <div class="display-5 mb-3" aria-hidden="true">🌗</div>
               <h5 class="fw-bold">Smart Dark Mode</h5>
               <p class="text-muted small mb-0">Built-in dark mode with smooth transitions. Toggle via API without page
                 refresh.</p>
             </div>
-          </div>
+          </article>
         </div>
         <div class="col-md-6 col-lg-4">
-          <div class="card h-100 border-0 shadow-sm rounded-4">
+          <article class="card h-100 border-0 shadow-sm rounded-4">
             <div class="card-body p-4">
-              <div class="display-5 mb-3">🧩</div>
+              <div class="display-5 mb-3" aria-hidden="true">🧩</div>
               <h5 class="fw-bold">Modular System</h5>
               <p class="text-muted small mb-0">Mix palettes, fonts, and structural styles. Create unique combinations
                 effortlessly.</p>
             </div>
-          </div>
+          </article>
         </div>
         <div class="col-md-6 col-lg-4">
-          <div class="card h-100 border-0 shadow-sm rounded-4">
+          <article class="card h-100 border-0 shadow-sm rounded-4">
             <div class="card-body p-4">
-              <div class="display-5 mb-3">🔄</div>
+              <div class="display-5 mb-3" aria-hidden="true">🔄</div>
               <h5 class="fw-bold">Runtime Hot-Swap</h5>
               <p class="text-muted small mb-0">Change themes dynamically via the JavaScript API. No reloads, no
                 rebuilds needed.</p>
             </div>
-          </div>
+          </article>
         </div>
         <div class="col-md-6 col-lg-4">
-          <div class="card h-100 border-0 shadow-sm rounded-4">
+          <article class="card h-100 border-0 shadow-sm rounded-4">
             <div class="card-body p-4">
-              <div class="display-5 mb-3">🤖</div>
+              <div class="display-5 mb-3" aria-hidden="true">🤖</div>
               <h5 class="fw-bold">AI-Ready</h5>
               <p class="text-muted small mb-0">Built-in AI Skills let your assistant create new themes following the
                 architecture automatically.</p>
             </div>
-          </div>
+          </article>
         </div>
         <div class="col-md-6 col-lg-4">
-          <div class="card h-100 border-0 shadow-sm rounded-4">
+          <article class="card h-100 border-0 shadow-sm rounded-4">
             <div class="card-body p-4">
-              <div class="display-5 mb-3">📁</div>
+              <div class="display-5 mb-3" aria-hidden="true">📁</div>
               <h5 class="fw-bold">Zero Dependencies</h5>
               <p class="text-muted small mb-0">Works from the file:// protocol. No server, no CORS issues, fully
                 portable anywhere.</p>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </div>
@@ -472,35 +522,37 @@
           <h2 class="display-5 fw-bold mb-2">Design to Production</h2>
           <p class="lead text-muted mb-5">Three simple steps. No complexity.</p>
 
-          <div class="d-flex gap-3 mb-4 align-items-start">
-            <div
-              class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 fw-bold"
-              style="width:40px;height:40px">1</div>
-            <div>
-              <h5 class="fw-bold mb-1">Design Visually</h5>
-              <p class="text-muted mb-0">Open the editor and experiment with palettes, fonts, borders, and shadows in
-                real time.</p>
-            </div>
-          </div>
-          <div class="d-flex gap-3 mb-4 align-items-start">
-            <div
-              class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 fw-bold"
-              style="width:40px;height:40px">2</div>
-            <div>
-              <h5 class="fw-bold mb-1">Export Your Theme</h5>
-              <p class="text-muted mb-0">Click <em>"Copy CSS Preset"</em> to get your optimized theme as a clean CSS
-                file.</p>
-            </div>
-          </div>
-          <div class="d-flex gap-3 align-items-start">
-            <div
-              class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 fw-bold"
-              style="width:40px;height:40px">3</div>
-            <div>
-              <h5 class="fw-bold mb-1">Drop &amp; Ship</h5>
-              <p class="text-muted mb-0">Save the CSS, add two lines to your HTML, and you're live. That's it.</p>
-            </div>
-          </div>
+          <ol class="list-unstyled">
+            <li class="d-flex gap-3 mb-4 align-items-start">
+              <div
+                class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 fw-bold"
+                style="width:40px;height:40px">1</div>
+              <div>
+                <h5 class="fw-bold mb-1">Design Visually</h5>
+                <p class="text-muted mb-0">Open the editor and experiment with palettes, fonts, borders, and shadows in
+                  real time.</p>
+              </div>
+            </li>
+            <li class="d-flex gap-3 mb-4 align-items-start">
+              <div
+                class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 fw-bold"
+                style="width:40px;height:40px">2</div>
+              <div>
+                <h5 class="fw-bold mb-1">Export Your Theme</h5>
+                <p class="text-muted mb-0">Click <em>"Copy CSS Preset"</em> to get your optimized theme as a clean CSS
+                  file.</p>
+              </div>
+            </li>
+            <li class="d-flex gap-3 align-items-start">
+              <div
+                class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 fw-bold"
+                style="width:40px;height:40px">3</div>
+              <div>
+                <h5 class="fw-bold mb-1">Drop &amp; Ship</h5>
+                <p class="text-muted mb-0">Save the CSS, add two lines to your HTML, and you're live. That's it.</p>
+              </div>
+            </li>
+          </ol>
         </div>
 
         <!-- Code block -->
@@ -623,8 +675,9 @@
       </div>
     </div>
   </section>
+</main>
 
-  <!-- ======================== FOOTER ======================== -->
+<!-- ======================== FOOTER ======================== -->
   <footer class="bg-dark text-white py-5">
     <div class="container">
       <div class="row gy-4">
