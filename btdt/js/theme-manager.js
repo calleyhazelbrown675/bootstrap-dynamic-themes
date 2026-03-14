@@ -24,7 +24,13 @@ class ThemeManager {
         'inter', 'merriweather', 'nunito', 'jetbrains-mono',
         'playfair-display', 'roboto-slab', 'quicksand', 'oswald',
         'montserrat', 'poppins', 'roboto', 'lora', 'raleway', 'fira-sans',
-        'dm-sans', 'pt-serif', 'neucha', 'cabin-sketch', 'alfa-slab-one', 'bebas-neue'
+        'dm-sans', 'pt-serif', 'neucha', 'cabin-sketch', 'alfa-slab-one', 'bebas-neue',
+        'open-sans', 'lato', 'source-sans-pro', 'ubuntu', 'work-sans', 'manrope',
+        'josefin-sans', 'jost', 'outfit', 'lexend', 'crimson-text', 'eb-garamond',
+        'libre-baskerville', 'cormorant-garamond', 'bitter', 'cardo', 'spectral',
+        'lobster', 'pacifico', 'comfortaa', 'fredoka-one', 'righteous', 'abril-fatface',
+        'cinzel', 'kaushan-script', 'roboto-mono', 'fira-code', 'source-code-pro',
+        'space-mono', 'inconsolata', 'syne', 'space-grotesk', 'architects-daughter'
       ],
       borders: ['normal', 'extra', 'none'],
       rounding: ['normal', 'extra', 'none'],
