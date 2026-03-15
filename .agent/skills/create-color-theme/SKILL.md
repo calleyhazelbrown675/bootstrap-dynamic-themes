@@ -7,37 +7,36 @@ The application is a dynamic theme engine for Bootstrap 5. Themes are injected a
 
 ## Directory Structure
 Color themes are stored in: `btdt/themes/colors/[theme-name].css`
+The starting point is always the template: `btdt/themes/colors/_template_.css`.
 
 ## Implementation Guidelines
 
 ### 0. Research & Reference (MANDATORY)
-Before starting, you MUST read at least two existing color themes to understand the current structure and how variables are mapped.
-- Recommended: `btdt/themes/colors/ocean.css` and `btdt/themes/colors/corporate.css`.
-- Notice how text contrast is handled and how specific Bootstrap components are overridden.
+Before starting, you MUST open `btdt/themes/colors/_template_.css` and base the new theme on it.
+You MAY also read existing themes for inspiration (recommended: `btdt/themes/colors/corporate.css` and `btdt/themes/colors/white.css`), but the template is the source of truth for structure.
 
-### 1. Root Variables
-Every theme must define the following variables in a `:root` block:
-- `--bs-body-bg`: Main background color. **Default to `#ffffff` (white) unless the user explicitly requests a Dark theme**.
-- `--bs-body-color`: Main text color. Ensure a minimum contrast ratio of 4.5:1.
-- `--bs-primary`, `--bs-primary-rgb`: The main accent color.
-- `--bs-secondary`, `--bs-secondary-rgb`: The secondary accent color.
-- `--bs-link-color`, `--bs-link-hover-color`: High visibility link colors.
+### 1. Template-First Workflow (CRITICAL)
+- Copy `btdt/themes/colors/_template_.css` to `btdt/themes/colors/[theme-name].css`.
+- Only edit the variables and tokens provided by the template.
+- Do NOT create new selectors, classes, or overrides.
+- Do NOT overwrite existing class blocks; the template already contains all required structure.
 
 ### 1.1 Contrast Awareness (CRITICAL)
-If the `--bs-primary` or `--bs-secondary` color is light (e.g., pastels, lime, yellow):
-- Elements like `.bg-primary`, `.bg-secondary`, and `.btn-primary` MUST use a dark text color (e.g., `#1a1a1a`) instead of white to ensure legibility.
-- Conversely, for dark primary colors, always use white text.
+Set the contrast-related variables in the template so that:
+- If the `--bs-primary` or `--bs-secondary` color is light (e.g., pastels, lime, yellow), text on those backgrounds uses a dark color (e.g., `#1a1a1a`).
+- Conversely, for dark primary colors, text uses white.
+- **Navbar Toggler**: Ensure `--bs-navbar-toggler-icon-filter` matches the text color of the primary background. 
+  - Use `invert(1) brightness(2)` for white text on dark backgrounds.
+  - Use `none` for dark text on light backgrounds.
 
 ### 1.2 Component Overrides
-- **Navbar**: Ensure the navbar text is legible on the primary background. Add an override for `.navbar-dark .navbar-nav .nav-link` to use `inherit` color if the primary background is light.
-- **Progress Bars**: Set the background color to match the primary.
-- **Links**: Ensure link visibility on all background variations.
+Do not add or modify component override selectors. All required overrides must already exist in the template.
 
 ### 2. Button Overrides
-Customize `.btn-primary` and `.btn-secondary` to match the palette. Ensure text remains legible on the button background.
+Only adjust the template variables used by button styles. Do not edit selector blocks.
 
 ### 3. Utility Classes
-Define `.bg-primary`, `.bg-secondary`, `.text-primary`, and `.text-secondary`.
+Do not add or modify utility class selectors. The template defines them.
 
 ### 4. Metadata Update (CRITICAL)
 After creating the CSS file, you MUST add the new theme metadata to `btdt/js/config-colors.js`.
@@ -45,21 +44,14 @@ After creating the CSS file, you MUST add the new theme metadata to `btdt/js/con
 - This ensures the editor can display the color swatch in the new custom select dropdown.
 
 ### 5. Accessibility & Legibility (Crucial)
-To ensure links remain visible in different backgrounds, always include this block at the end of the file:
-
-```css
-/* Ensure link legibility in background containers (excluding navbar) */
-[class*="bg-"]:not(.navbar) a:not(.btn):not(.nav-link),
-[class*="text-bg-"]:not(.navbar) a:not(.btn):not(.nav-link) {
-  color: inherit !important;
-  text-decoration: underline;
-}
-```
+The template already includes any required link legibility rules. Do not add or duplicate selector blocks.
 
 ## Aesthetic Standards
 - Avoid generic colors. Use harmonious, curated palettes (e.g., Pastel, Midnight, Earth tones).
+- **Background Color (IMPORTANT)**: By default, the body background (`--bs-body-bg`) MUST be white (`#ffffff`).
+  - Only use off-white or very light tinted tones (e.g., `#f8f9fa`, `#fffcf2`) if the USER explicitly asks for a "creative", "imaginative", or "themed" approach, or if the specific aesthetic (like "Autumn" or "Vintage") strongly requires it.
 - For "Dark" themes, ensure subtle contrast rather than pure black (#000). Use deep grays or navy.
 - For "Light" themes, ensure the primary color isn't too bright to wash out text.
 
 ## Example Reference
-See `btdt/themes/colors/ocean.css` or `btdt/themes/colors/white.css` for structural examples.
+See `btdt/themes/colors/corporate.css` for structural examples.
