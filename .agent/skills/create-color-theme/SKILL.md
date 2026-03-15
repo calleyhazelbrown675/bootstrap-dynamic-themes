@@ -15,6 +15,8 @@ The starting point is always the template: `btdt/themes/colors/_template_.css`.
 Before starting, you MUST open `btdt/themes/colors/_template_.css` and base the new theme on it.
 You MAY also read existing themes for inspiration (recommended: `btdt/themes/colors/corporate.css` and `btdt/themes/colors/white.css`), but the template is the source of truth for structure.
 
+For advanced color theory and aesthetic guidelines, consult: [colors-guide.md](../../../docs/colors-guide.md).
+
 ### 1. Template-First Workflow (CRITICAL)
 - Copy `btdt/themes/colors/_template_.css` to `btdt/themes/colors/[theme-name].css`.
 - Only edit the variables and tokens provided by the template.
@@ -33,9 +35,12 @@ Set the contrast-related variables in the template so that:
 Do not add or modify component override selectors. All required overrides must already exist in the template.
 
 ### 1.3 Custom Accent Color
-- Set `--accent-color` (and its RGB version) to the **Accent** color defined for the theme.
-- This color is used by "Accent" styles (e.g., `btdt/themes/styles/accent-bottom.css`) to add decorative lines to cards, alerts, and navbars.
-- If the theme doesn't have a distinct accent color, use a variation of the Primary or Secondary color.
+- **Default**: Set `--accent-color` (and its RGB version) to be the SAME as `--bs-primary`.
+- **Refinement (Optional)**: If a subtle variation is desired to make the accent stand out:
+  - **For Dark Primary themes**: Use a slightly LIGTHER version (tint) of the primary color.
+  - **For Light Primary themes**: Use a slightly DARKER version (shade) of the primary color.
+- **Goal**: The accent should feel like a natural extension of the primary brand color, providing a premium, integrated look instead of a sharp, high-contrast break.
+- **SVG Sync**: Ensure embedded SVGs in the template (like accordion icons) use this color logic when applicable.
 
 ### 2. Button Overrides
 Only adjust the template variables used by button styles. Do not edit selector blocks.

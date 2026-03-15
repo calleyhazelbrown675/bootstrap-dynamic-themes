@@ -39,31 +39,31 @@
   --bs-primary: #ff8f00;
   --bs-secondary: #ffb300;
   --bs-success: #1A7F54;
-  --bs-info: #ffc107;
+  --bs-info: #995500;
   --bs-warning: #E5A100;
   --bs-danger: #C0392B;
   --bs-light: #F4F6F9;
   --bs-dark: #161C2D;
 
   /* Custom accent color for btdt/themes/styles/accent-*.css */
-  --accent-color: #ffc107;
+  --accent-color: #995500;
 
   /* ─── Semantic RGB ─── */
   --bs-primary-rgb: 255, 143, 0;
   --bs-secondary-rgb: 255, 179, 0;
   --bs-success-rgb: 26, 127, 84;
-  --bs-info-rgb: 255, 193, 7;
+  --bs-info-rgb: 153, 85, 0;
   --bs-warning-rgb: 229, 161, 0;
   --bs-danger-rgb: 192, 57, 43;
   --bs-light-rgb: 244, 246, 249;
   --bs-dark-rgb: 22, 28, 45;
-  --accent-color-rgb: 255, 193, 7;
+  --accent-color-rgb: 153, 85, 0;
 
   /* ─── Contrast (text on top of each bg) ─── */
   --bs-primary-contrast: #000;
   --bs-secondary-contrast: #000;
   --bs-success-contrast: #fff;
-  --bs-info-contrast: #000;
+  --bs-info-contrast: #fff;
   --bs-warning-contrast: #161C2D;
   --bs-danger-contrast: #fff;
   --bs-light-contrast: #161C2D;
