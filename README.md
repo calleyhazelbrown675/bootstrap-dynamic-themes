@@ -141,6 +141,12 @@ BTDT handles contrast at the **CSS variable level**. Each theme module calculate
     <a class="nav-link" href="#">Automatic Dynamic Link</a>
 </header>
 ```
+In some cases you may need to use `text-reset`.
+
+```html
+<!-- Clean, Agnostic HTML -->
+<a class="nav-link text-reset" href="#">Automatic Dynamic Link</a>
+```
 
 - **Zero HTML Changes**: Switch from a dark professional theme to a light pastel style, and your menus, cards, and links **automatically adapt** their colors instantly.
 - **Smart Icons**: The navbar toggler and other SVG icons automatically flip their filters to remain visible.
