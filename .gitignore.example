@@ -3,3 +3,6 @@
 
 # Ignore the editor (keep only core engine and themes)
 btdt/editor/
+
+# Ignore scripts
+btdt/scripts/

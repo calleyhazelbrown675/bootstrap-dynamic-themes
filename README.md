@@ -11,12 +11,23 @@ A professional, real-time theme customizer and modular engine for Bootstrap 5. A
 This project is organized as a standalone module (`btdt/`) that can be easily dropped into any project.
 
 ```text
-├── btdt/                 # Root of the theme module
-│   ├── editor/           # THE CUSTOMIZER (visual designer)
-│   ├── css/              # Bootstrap foundation
-│   ├── js/               # theme-manager.js engine
-│   └── themes/           # CSS modules (colors, fonts, etc.)
-├── .gitignore.example    # Suggested rules for production
+.
+├── btdt/
+│   ├── css/              # Bootstrap base CSS and shared theme rules
+│   ├── docs/             # Internal design docs
+│   ├── editor/           # Visual theme editor
+│   ├── img/              # Demo assets
+│   ├── js/               # Runtime loader, editor engine and config catalogs
+│   ├── scripts/          # Maintenance utilities
+│   ├── themes/
+│   │   ├── colors/       # Color palettes
+│   │   ├── fonts/        # Typography modules
+│   │   ├── modes/        # Dark mode overrides
+│   │   ├── preset/       # Ready-to-use combined themes
+│   │   └── styles/       # UI style modules (spacing, shadows, borders, etc.)
+│   └── index.html        # Showcase / demo page
+├── .agent/skills/        # Optional AI workflows for extending the catalog
+├── .gitignore.example
 └── README.md
 ```
 
