@@ -8,14 +8,14 @@
   <meta name="description" content="A professional, real-time theme customizer and modular engine for Bootstrap 5. An alternative to **Bootswatch**.">
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" id="main-preset" href="themes/preset/nordic-elegance.css">
+  <link rel="stylesheet" id="theme-preset" href="themes/preset/nordic-elegance.css">
 
 </head>
 
 <body>
 
   <!-- ======================== NAVBAR ======================== -->
-  <nav class="navbar navbar-expand-lg fixed-top bg-primary shadow-sm py-2">
+  <nav class="navbar navbar-expand-lg fixed-top bg-primary rounded-0 py-2">
     <div class="container">
       <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">
         <span class="fs-3">🎨</span> BTDT
@@ -725,12 +725,20 @@
 
   <!-- ======================== SCRIPTS ======================== -->
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/btdt.js" data-auto-init="false"></script>
   <script src="js/config-presets.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const presetList = document.getElementById('presetList');
-      const mainLink = document.getElementById('main-preset');
+      const presetLink = document.getElementById('theme-preset');
       const themeBadge = document.getElementById('currentThemeBadge');
+
+      function getCurrentPresetId() {
+        if (!presetLink) return null;
+        const href = presetLink.getAttribute('href') || '';
+        const fileName = href.split('/').pop() || '';
+        return fileName.endsWith('.css') ? fileName.slice(0, -4) : null;
+      }
 
       /* Dropdown header */
       const hdr = document.createElement('li');
@@ -757,7 +765,9 @@
       }
 
       window.changeTheme = (id) => {
-        mainLink.href = `themes/preset/${id}.css`;
+        if (window.btdt) {
+          window.btdt.load(id);
+        }
         /* Update badge */
         if (themeBadge) {
           const p = window.BTDT_PRESETS && window.BTDT_PRESETS[id];
@@ -768,6 +778,11 @@
           item.classList.toggle('active', item.dataset.preset === id);
         });
       };
+
+      const currentPresetId = getCurrentPresetId();
+      if (currentPresetId) {
+        window.changeTheme(currentPresetId);
+      }
     });
   </script>
 

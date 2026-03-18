@@ -3,7 +3,6 @@
    is visible in the demo without requiring HTML utility classes. */
 .navbar {
   border-radius: var(--bs-border-radius);
-  overflow: hidden;
 }
 
 .card {
