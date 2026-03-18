@@ -1,6 +1,6 @@
 /* themes/styles/accent-left.css
- * Línea de acento del color primario en el LADO IZQUIERDO
- * de los elementos de contenedor principales.
+ * Primary color accent line on the LEFT SIDE
+ * of main container elements.
  * --------------------------------------------------------- */
 
 /* Cards */
@@ -29,18 +29,18 @@
   border-bottom-width: var(--bs-alert-border-width, 1px);
 }
 
-/* Alerts con su propio color de borde */
+/* Alerts with their own border color */
 .alert-success  { --accent-color: var(--bs-success); }
 .alert-danger   { --accent-color: var(--bs-danger);  }
 .alert-warning  { --accent-color: var(--bs-warning); }
 .alert-info     { --accent-color: var(--bs-info);    }
 
-/* Nav tabs — línea izquierda activa */
+/* Nav tabs — left line on active */
 .nav-tabs .nav-link.active {
   border-left: var(--accent-size, 4px) solid var(--accent-color, var(--bs-primary));
 }
 
-/* Navbar — borde izquierdo (en sidebar / menú vertical) */
+/* Navbar — left border (in sidebar / vertical menu) */
 .navbar {
   border-left: var(--accent-size, 4px) solid var(--accent-color, var(--bs-primary));
 }

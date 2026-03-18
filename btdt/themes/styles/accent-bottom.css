@@ -1,6 +1,6 @@
 /* themes/styles/accent-bottom.css
- * Línea de acento del color primario en la PARTE INFERIOR
- * de los elementos de contenedor principales.
+ * Primary color accent line on the BOTTOM
+ * of main container elements.
  * --------------------------------------------------------- */
 
 /* Cards */
@@ -8,12 +8,12 @@
   border-bottom: var(--accent-size, 4px) solid var(--accent-color, var(--bs-primary));
 }
 
-/* List group items (solo el último) */
+/* List group items (last only) */
 .list-group-item:last-child {
   box-shadow: inset 0 calc(-1 * var(--accent-size, 4px)) 0 var(--accent-color, var(--bs-primary));
 }
 
-/* Accordion items — último */
+/* Accordion items — last */
 .accordion-item:last-of-type {
   border-bottom: var(--accent-size, 4px) solid var(--accent-color, var(--bs-primary));
 }
@@ -26,23 +26,23 @@
   border-top-width:    var(--bs-alert-border-width, 1px);
 }
 
-/* Alerts con su propio color de borde */
+/* Alerts with their own border color */
 .alert-success  { --accent-color: var(--bs-success); }
 .alert-danger   { --accent-color: var(--bs-danger);  }
 .alert-warning  { --accent-color: var(--bs-warning); }
 .alert-info     { --accent-color: var(--bs-info);    }
 
-/* Nav tabs — línea inferior en activo (subrayado) */
+/* Nav tabs — bottom line on active (underline) */
 .nav-tabs .nav-link.active {
   border-bottom: var(--accent-size, 4px) solid var(--accent-color, var(--bs-primary));
 }
 
-/* Nav pills — underline activo */
+/* Nav pills — active underline */
 .nav-pills .nav-link.active {
   border-bottom: var(--accent-size, 4px) solid var(--accent-color, var(--bs-primary));
 }
 
-/* Navbar — borde inferior (el más típico en diseño de nav) */
+/* Navbar — bottom border (most typical in nav design) */
 .navbar {
   border-bottom: var(--accent-size, 4px) solid var(--accent-color, var(--bs-primary));
 }
