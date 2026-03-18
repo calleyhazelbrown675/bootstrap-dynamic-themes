@@ -13,6 +13,7 @@
     const autoInit = script.getAttribute('data-auto-init') !== 'false';
     const initialPreset = script.getAttribute('data-preset');
     const initialMode = script.getAttribute('data-mode');
+    const defaultMinified = script.getAttribute('data-minified') === 'true';
 
     function withCacheBust(path) {
         const sep = path.includes('?') ? '&' : '?';
@@ -43,10 +44,11 @@
             null;
     }
 
-    function resolvePresetHref(name) {
+    function resolvePresetHref(name, options) {
+        const useMinified = Boolean(options && options.minified);
         if (!name) return null;
         if (name.endsWith('.css') || name.includes('/')) return name;
-        return `${basePath}themes/preset/${name}.css`;
+        return `${basePath}themes/preset/${name}${useMinified ? '.min' : ''}.css`;
     }
 
     function ensurePresetLink() {
@@ -83,8 +85,12 @@
         _initialized: true,
         _mode: document.documentElement.getAttribute('data-bs-theme') === 'dark' ? 'dark' : 'light',
 
-        load: function(name) {
-            const href = resolvePresetHref(name);
+        load: function(name, options) {
+            const normalizedOptions = {
+                minified: defaultMinified,
+                ...(options || {})
+            };
+            const href = resolvePresetHref(name, normalizedOptions);
             if (!href) return this;
 
             const link = ensurePresetLink();

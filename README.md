@@ -95,13 +95,21 @@ Best for static sites where speed is the only priority. Zero JS dependency for i
 </body>
 ```
 
+This loads the initial preset directly from HTML. `btdt.js` does not need to load anything on startup in this setup. It only exposes the API so you can switch presets later if needed.
+
+You can also start with a minified preset directly in the `<link>`:
+
+```html
+<link id="theme-preset" rel="stylesheet" href="btdt/themes/preset/studio.min.css">
+```
+
 #### Option B: All-in-One Loader (Saves a step)
 The simplest way. One single line in the `<head>` handles both CSS injection and API initialization.
 
 ```html
 <head>
     <link rel="stylesheet" href="btdt/css/bootstrap.min.css">
-    <script data-preset="studio" src="btdt/js/btdt.min.js"></script>
+    <script data-preset="studio" data-minified="true" src="btdt/js/btdt.min.js"></script>
 </head>
 ```
 
@@ -117,6 +125,26 @@ When using the JS loader, BTDT manages the active preset through a standard styl
 ```
 
 This `id` is the fixed hook used by `btdt.js` to detect, reuse, or replace the current preset stylesheet. If it already exists, `btdt.load('aurora')` updates that same `<link>` instead of creating duplicates. If it does not exist, `btdt.js` creates it automatically.
+
+Supported forms:
+
+```html
+<link id="theme-preset" rel="stylesheet" href="btdt/themes/preset/studio.css">
+<link id="theme-preset" rel="stylesheet" href="btdt/themes/preset/studio.min.css">
+<link id="theme-preset" rel="stylesheet" href="btdt/themes/preset/studio.min.css?v=0.0.4">
+```
+
+If you want full manual control, you can disable automatic initialization and keep the initial preset entirely in HTML:
+
+```html
+<head>
+    <link rel="stylesheet" href="btdt/css/bootstrap.min.css">
+    <link id="theme-preset" rel="stylesheet" href="btdt/themes/preset/studio.min.css">
+    <script data-auto-init="false" src="btdt/js/btdt.min.js"></script>
+</head>
+```
+
+In that configuration, `btdt.js` does not load any preset on startup. It only becomes available for later calls such as `btdt.load(...)`.
 
 ### 3. API Usage
 
@@ -135,7 +163,54 @@ Loads a preset stylesheet dynamically. You can pass a preset name such as `studi
 ```javascript
 btdt.load('studio');
 btdt.load('aurora');
+btdt.load('aurora', { minified: true });
 btdt.load('/assets/themes/custom-theme.css');
+btdt.load('/assets/themes/custom-theme.min.css');
+```
+
+If `data-minified="true"` is present on the loader script, `btdt.load(name)` uses `*.min.css` by default for preset names. You can also request it per call with:
+
+```javascript
+btdt.load('aurora', { minified: true });
+```
+
+Common loading patterns:
+
+- Load a named preset source file:
+
+```javascript
+btdt.load('studio'); // -> btdt/themes/preset/studio.css
+```
+
+- Load a named minified preset:
+
+```javascript
+btdt.load('studio', { minified: true }); // -> btdt/themes/preset/studio.min.css
+```
+
+- Load by direct path:
+
+```javascript
+btdt.load('btdt/themes/preset/studio.css');
+btdt.load('btdt/themes/preset/studio.min.css');
+```
+
+- Use `data-minified="true"` as the default for later named preset loads:
+
+```html
+<script data-minified="true" src="btdt/js/btdt.min.js"></script>
+```
+
+```javascript
+btdt.load('studio'); // -> btdt/themes/preset/studio.min.css
+```
+
+`data-minified="true"` does not load any preset by itself. It only changes the default target used later by `btdt.load(name)`.
+
+If you only want to expose the API and decide later what to load, this is enough:
+
+```html
+<script src="btdt/js/btdt.min.js"></script>
 ```
 
 - `btdt.setMode(mode)`

@@ -8,7 +8,7 @@
   <meta name="description" content="A professional, real-time theme customizer and modular engine for Bootstrap 5. An alternative to **Bootswatch**.">
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" id="theme-preset" href="themes/preset/nordic-elegance.css">
+  <link rel="stylesheet" id="theme-preset" href="themes/preset/nordic-elegance.min.css">
 
 </head>
 
@@ -736,8 +736,11 @@
       function getCurrentPresetId() {
         if (!presetLink) return null;
         const href = presetLink.getAttribute('href') || '';
-        const fileName = href.split('/').pop() || '';
-        return fileName.endsWith('.css') ? fileName.slice(0, -4) : null;
+        const cleanHref = href.split('?')[0].split('#')[0];
+        const fileName = cleanHref.split('/').pop() || '';
+        if (fileName.endsWith('.min.css')) return fileName.slice(0, -8);
+        if (fileName.endsWith('.css')) return fileName.slice(0, -4);
+        return null;
       }
 
       /* Dropdown header */
@@ -766,8 +769,12 @@
 
       window.changeTheme = (id) => {
         if (window.btdt) {
-          window.btdt.load(id);
+          window.btdt.load(id, { minified: true });
         }
+        updateThemeUI(id);
+      };
+
+      function updateThemeUI(id) {
         /* Update badge */
         if (themeBadge) {
           const p = window.BTDT_PRESETS && window.BTDT_PRESETS[id];
@@ -777,11 +784,11 @@
         presetList.querySelectorAll('.dropdown-item').forEach(item => {
           item.classList.toggle('active', item.dataset.preset === id);
         });
-      };
+      }
 
       const currentPresetId = getCurrentPresetId();
       if (currentPresetId) {
-        window.changeTheme(currentPresetId);
+        updateThemeUI(currentPresetId);
       }
     });
   </script>

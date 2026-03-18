@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+MINIFY_DIR="$SCRIPT_DIR/minify"
+MINIFY_PY="$MINIFY_DIR/minify.py"
+
+NORMAL_DIRS=(
+  "$SCRIPT_DIR/../css"
+  "$SCRIPT_DIR/../js"
+  "$SCRIPT_DIR/../themes/colors"
+  "$SCRIPT_DIR/../themes/fonts"
+  "$SCRIPT_DIR/../themes/modes"
+  "$SCRIPT_DIR/../themes/styles"
+)
+
+PRESET_DIRS=(
+  "$SCRIPT_DIR/../themes/preset"
+)
+
+cd "$MINIFY_DIR"
+
+source .venv/bin/activate
+
+for dir in "${NORMAL_DIRS[@]}"; do
+  python minify.py normal "$dir"
+done
+
+for dir in "${PRESET_DIRS[@]}"; do
+  python minify.py preset "$dir"
+done
