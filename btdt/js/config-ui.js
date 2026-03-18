@@ -17,5 +17,7 @@ window.BTDT_UI = {
   shadows: { normal: 'Normal', extra: 'Extra', none: 'None' },
   spacing: { normal: 'Normal', large: 'Large', small: 'Compact' },
   gradients: { on: 'Yes', off: 'No' },
-  accent: { none: 'None', left: 'Left', right: 'Right', top: 'Top', bottom: 'Bottom' }
+  accent: { none: 'None', left: 'Left', right: 'Right', top: 'Top', bottom: 'Bottom' },
+  accentSize: { 1: '1 px', 2: '2 px', 3: '3 px', 4: '4 px', 5: '5 px' },
+  accentColor: { primary: 'Primary', secondary: 'Secondary', gray: 'Gray' }
 };

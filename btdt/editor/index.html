@@ -838,9 +838,9 @@
       </div>
     </div>
 
-    <!-- ACCENT -->
+    <!-- ACCENT POSITION -->
     <div class="panel-section">
-      <h6>✨ Accent Line</h6>
+      <h6>✨ Accent Position</h6>
       <div class="custom-select-container" data-select-type="accent" id="accentSelectContainer">
         <div class="custom-select-trigger" onclick="toggleCustomDropdown('accent')">
           <div class="custom-select-content" id="accentSelectContent">
@@ -848,6 +848,32 @@
           </div>
         </div>
         <div class="custom-select-dropdown" id="accentDropdown"></div>
+      </div>
+    </div>
+
+    <!-- ACCENT SIZE -->
+    <div class="panel-section">
+      <h6>📏 Accent Size</h6>
+      <div class="custom-select-container" data-select-type="accentSize" id="accentSizeSelectContainer">
+        <div class="custom-select-trigger" onclick="toggleCustomDropdown('accentSize')">
+          <div class="custom-select-content" id="accentSizeSelectContent">
+            <span>Select accent size...</span>
+          </div>
+        </div>
+        <div class="custom-select-dropdown" id="accentSizeDropdown"></div>
+      </div>
+    </div>
+
+    <!-- ACCENT COLOR -->
+    <div class="panel-section">
+      <h6>🎯 Accent Color</h6>
+      <div class="custom-select-container" data-select-type="accentColor" id="accentColorSelectContainer">
+        <div class="custom-select-trigger" onclick="toggleCustomDropdown('accentColor')">
+          <div class="custom-select-content" id="accentColorSelectContent">
+            <span>Select accent color...</span>
+          </div>
+        </div>
+        <div class="custom-select-dropdown" id="accentColorDropdown"></div>
       </div>
     </div>
 
@@ -2026,7 +2052,7 @@
       document.getElementById('fontsDropdown').innerHTML = fontsHtml;
 
       // 4. Other categories (Background, Borders, Rounding, etc.)
-      ['background', 'borders', 'rounding', 'shadows', 'spacing', 'gradients', 'accent']
+      ['background', 'borders', 'rounding', 'shadows', 'spacing', 'gradients', 'accent', 'accentSize', 'accentColor']
         .forEach(cat => {
           const dropdown = document.getElementById(`${cat}Dropdown`);
           if (!dropdown) return;
@@ -2119,7 +2145,7 @@
       if (navText) navText.textContent = isDark ? 'Dark mode' : 'Light mode';
 
       // Update custom select options state
-      ['preset', 'colors', 'fonts', 'background', 'borders', 'rounding', 'shadows', 'spacing', 'gradients', 'accent']
+      ['preset', 'colors', 'fonts', 'background', 'borders', 'rounding', 'shadows', 'spacing', 'gradients', 'accent', 'accentSize', 'accentColor']
         .forEach(type => {
           const dropdown = document.getElementById(`${type}Dropdown`);
           const triggerContent = document.getElementById(`${type}SelectContent`);
@@ -2174,7 +2200,9 @@
               shadows: 'Select shadows...',
               spacing: 'Select spacing...',
               gradients: 'Gradients?',
-              accent: 'Select accent...'
+              accent: 'Select accent...',
+              accentSize: 'Select accent size...',
+              accentColor: 'Select accent color...'
             };
             triggerContent.innerHTML = `<span>${defaultLabels[type]}</span>`;
           }

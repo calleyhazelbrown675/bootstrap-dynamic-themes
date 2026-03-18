@@ -34,7 +34,9 @@ class ThemeManager {
       shadows: Object.keys(ui.shadows || {}).length ? Object.keys(ui.shadows) : ['normal', 'extra', 'none'],
       spacing: Object.keys(ui.spacing || {}).length ? Object.keys(ui.spacing) : ['normal', 'large', 'small'],
       gradients: Object.keys(ui.gradients || {}).length ? Object.keys(ui.gradients) : ['on', 'off'],
-      accent: Object.keys(ui.accent || {}).length ? Object.keys(ui.accent) : ['none', 'left', 'right', 'top', 'bottom']
+      accent: Object.keys(ui.accent || {}).length ? Object.keys(ui.accent) : ['none', 'left', 'right', 'top', 'bottom'],
+      accentSize: Object.keys(ui.accentSize || {}).length ? Object.keys(ui.accentSize) : ['1', '2', '3', '4', '5'],
+      accentColor: Object.keys(ui.accentColor || {}).length ? Object.keys(ui.accentColor) : ['primary', 'secondary', 'gray']
     };
 
     // Available modes
@@ -46,7 +48,7 @@ class ThemeManager {
     // Current active theme
     this.activeTheme = {
       colors: null, fonts: null, background: null, borders: null, rounding: null,
-      shadows: null, spacing: null, gradients: null, accent: null
+      shadows: null, spacing: null, gradients: null, accent: null, accentSize: null, accentColor: null
     };
 
     // Predefined presets
@@ -68,7 +70,7 @@ class ThemeManager {
   }
 
   _getCascadeOrder() {
-    return ['colors', 'fonts', 'background', 'borders', 'rounding', 'shadows', 'spacing', 'gradients', 'accent'];
+    return ['colors', 'fonts', 'background', 'borders', 'rounding', 'shadows', 'spacing', 'gradients', 'accent', 'accentSize', 'accentColor'];
   }
 
   _reorderThemeLinks() {
@@ -128,7 +130,9 @@ class ThemeManager {
       shadows:  `themes/styles/shadows-${value}.css`,
       spacing:  `themes/styles/spacing-${value}.css`,
       gradients:`themes/styles/gradients-${value}.css`,
-      accent:   `themes/styles/accent-${value}.css`
+      accent:   `themes/styles/accent-${value}.css`,
+      accentSize:`themes/styles/accent-${value}.css`,
+      accentColor:`themes/styles/accent-${value}.css`
     };
 
     return pathMap[category] ? this._resolvePath(pathMap[category]) : null;
