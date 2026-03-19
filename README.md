@@ -149,7 +149,7 @@ Supported forms:
 ```html
 <link id="theme-preset" rel="stylesheet" href="btdt/themes/preset/studio.css">
 <link id="theme-preset" rel="stylesheet" href="btdt/themes/preset/studio.min.css">
-<link id="theme-preset" rel="stylesheet" href="btdt/themes/preset/studio.min.css?v=0.0.4">
+<link id="theme-preset" rel="stylesheet" href="btdt/themes/preset/studio.min.css?v=x.x.x">
 ```
 
 If you want full manual control, you can disable automatic initialization and keep the initial preset entirely in HTML:
