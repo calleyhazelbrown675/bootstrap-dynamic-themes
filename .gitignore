@@ -1,2 +1,4 @@
+**/.env*
+**/.venv*
+**/venv*
 .vscode
-btdt/scripts/minify/.venv
