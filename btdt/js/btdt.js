@@ -66,7 +66,7 @@
 (function() {
     if (window.btdt && window.btdt._initialized) return;
 
-    const VERSION = '1.0.0';
+    const VERSION = '0.0.4';
 
     const script = document.currentScript;
     if (!script) return;
