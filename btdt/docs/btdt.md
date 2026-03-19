@@ -26,6 +26,7 @@ For production, prefer the minified build:
 ```html
 <script src="path/to/btdt/js/btdt.min.js"
         data-preset="theme-name"
+        data-minified="true"
         data-dark-cookie="dark_mode"
         data-cookie-expire="30"
         data-dark-system="true">
@@ -197,7 +198,7 @@ Production variant:
 
 ```html
 <script src="btdt/js/btdt.min.js?v=x.x.x"
-        data-preset="theme-name">
+        data-preset="theme-name" data-minified="true">
 </script>
 ```
 
@@ -217,6 +218,7 @@ The cookie expires when the browser is closed. The OS preference is used as fall
 ```html
 <script src="btdt/js/btdt.js"
         data-preset="theme-name"
+        data-minified="true"
         data-dark-cookie="dark_mode"
         data-dark-system="true">
 </script>
@@ -227,6 +229,7 @@ The cookie expires when the browser is closed. The OS preference is used as fall
 ```html
 <script src="btdt/js/btdt.js"
         data-preset="theme-name"
+        data-minified="true"
         data-dark-cookie="dark_mode"
         data-cookie-expire="30"
         data-dark-system="true">
@@ -240,6 +243,7 @@ The server writes the user's stored preference directly into the attribute. `dat
 ```html
 <script src="btdt/js/btdt.js"
         data-preset="theme-name"
+        data-minified="true"
         data-dark-value="<?= $user->darkMode ? 'dark' : 'light' ?>"
         data-dark-cookie="dark_mode"
         data-cookie-expire="365">
