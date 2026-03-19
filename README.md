@@ -97,12 +97,13 @@ Best for static sites where speed is the only priority. Zero JS dependency for i
 <head>
     <link rel="stylesheet" href="btdt/css/bootstrap.min.css">
     <link id="theme-preset" rel="stylesheet" href="btdt/themes/preset/studio.css">
+    <link id="theme-preset-dark" rel="stylesheet" href="btdt/themes/modes/dark.min.css" media="not all">
 </head>
 
 <body>
     ...
     <!-- API access -->
-    <script src="btdt/js/btdt.min.js"></script>
+    <script src="btdt/js/btdt.min.js?v=x.x.x"></script>
 </body>
 ```
 
@@ -127,6 +128,10 @@ The simplest way. One single line in the `<head>` handles both CSS injection and
 > [!NOTE]
 > Using the JS loader (**Option B**) may cause a slight flash of unstyled content (FOUC) during page load as the CSS is injected via JavaScript. For a perfectly smooth experience, use **Option A**.
 
+For production, prefer `btdt.min.js`. Adding a version to the script URL, for example `btdt/js/btdt.min.js?v=x.x.x`, is a simple way to invalidate browser cache after publishing changes.
+
+The BTDT loader (`btdt.js` / `btdt.min.js`) is **CSP compliant**: it does not require inline styles, `eval`, or a nonce.
+
 ### About `theme-preset`
 
 When using the JS loader, BTDT manages the active preset through a standard stylesheet tag:
@@ -136,6 +141,8 @@ When using the JS loader, BTDT manages the active preset through a standard styl
 ```
 
 This `id` is the fixed hook used by `btdt.js` to detect, reuse, or replace the current preset stylesheet. If it already exists, `btdt.load('aurora')` updates that same `<link>` instead of creating duplicates. If it does not exist, `btdt.js` creates it automatically.
+
+For dark mode, the loader also manages a separate `<link id="theme-preset-dark">` pointing to `btdt/themes/modes/dark.min.css`, enabling it through the `media` attribute when needed.
 
 Supported forms:
 
@@ -251,6 +258,7 @@ Notes:
 - `btdt.js` is a production loader. It only handles preset loading and dark/light mode.
 - It does not depend on the editor or on `theme-manager.js`.
 - It does not need to know which presets exist in advance. It simply updates the active preset stylesheet.
+- Full loader documentation, attributes, dark-mode behavior and detailed examples: [btdt/docs/btdt.md](btdt/docs/btdt.md).
 
 ## Dynamic Contrast & Theming
 
