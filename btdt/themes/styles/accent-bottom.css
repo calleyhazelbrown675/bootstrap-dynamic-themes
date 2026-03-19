@@ -12,6 +12,10 @@
 .list-group-item:last-child {
   box-shadow: inset 0 calc(-1 * var(--accent-size, 4px)) 0 var(--accent-color, var(--bs-primary));
 }
+.list-group-item.border-0,
+.border-0 .list-group-item {
+  box-shadow: none !important;
+}
 
 /* Accordion items — last */
 .accordion-item:last-of-type {
