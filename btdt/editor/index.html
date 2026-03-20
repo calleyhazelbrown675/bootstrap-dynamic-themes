@@ -884,6 +884,13 @@
       <pre id="currentConfig" class="bg-dark text-light p-3 rounded small overflow-auto"></pre>
       <button class="btn btn-sm btn-outline-primary w-100 mt-2" onclick="copyConfig()">📋 Copy CSS Preset</button>
     </div>
+
+    <div class="panel-section">
+      <h6>🗜️ Bundled + Minified</h6>
+      <pre id="bundledMinifiedConfig" class="bg-dark text-light p-3 rounded small overflow-auto">Click "Generate bundled CSS" to build a single minified stylesheet.</pre>
+      <button id="generateBundledBtn" class="btn btn-sm btn-outline-primary w-100 mt-2" onclick="generateBundledConfig()">🗜️ Generate bundled CSS</button>
+      <button id="copyBundledBtn" class="btn btn-sm btn-outline-secondary w-100 mt-2" onclick="copyBundledConfig()" disabled>📋 Copy bundled CSS</button>
+    </div>
   </div>
 
   <!-- ==================== DEMO CONTENT ==================== -->
@@ -2014,10 +2021,12 @@
 
   <!-- Theme Manager -->
   <script src="../js/theme-manager.js"></script>
+  <script src="./minify.js"></script>
 
   <script>
     // Initialize ThemeManager for the editor (moves up from /editor/ folder)
     window.themeManager = new ThemeManager({ basePath: '../' });
+    let bundledMinifiedCSS = '';
 
     // Shortcuts to global configs
     const colorSwatches = window.BTDT_COLORS;
@@ -2149,6 +2158,39 @@
       alert('CSS Preset copied to clipboard!');
     }
 
+    async function generateBundledConfig() {
+      const pre = document.getElementById('bundledMinifiedConfig');
+      const copyBtn = document.getElementById('copyBundledBtn');
+
+      if (!window.BTDTMinifier || !window.BTDTMinifier.isAvailable()) {
+        bundledMinifiedCSS = '';
+        if (pre) pre.textContent = 'Bundled export is not available when the editor is opened via file://. Serve the project over HTTP to enable it.';
+        if (copyBtn) copyBtn.disabled = true;
+        return;
+      }
+
+      if (pre) pre.textContent = 'Generating bundled CSS...';
+      if (copyBtn) copyBtn.disabled = true;
+
+      try {
+        bundledMinifiedCSS = await window.BTDTMinifier.bundleAndMinifyPresetCSS(
+          themeManager.generatePresetCSS()
+        );
+        if (pre) pre.textContent = bundledMinifiedCSS;
+        if (copyBtn) copyBtn.disabled = false;
+      } catch (error) {
+        bundledMinifiedCSS = '';
+        if (pre) pre.textContent = `Could not generate bundled CSS: ${error.message}`;
+        if (copyBtn) copyBtn.disabled = true;
+      }
+    }
+
+    function copyBundledConfig() {
+      if (!bundledMinifiedCSS) return;
+      navigator.clipboard.writeText(bundledMinifiedCSS);
+      alert('Bundled minified CSS copied to clipboard!');
+    }
+
     // ===== Update panel visual state =====
     function updatePanelState() {
       const config = themeManager.getConfig();
@@ -2235,6 +2277,21 @@
       // Config display
       const pre = document.getElementById('currentConfig');
       if (pre) pre.textContent = themeManager.generatePresetCSS();
+
+      const bundledPre = document.getElementById('bundledMinifiedConfig');
+      const generateBtn = document.getElementById('generateBundledBtn');
+      const copyBtn = document.getElementById('copyBundledBtn');
+
+      bundledMinifiedCSS = '';
+      if (copyBtn) copyBtn.disabled = true;
+
+      if (window.BTDTMinifier && !window.BTDTMinifier.isAvailable()) {
+        if (bundledPre) bundledPre.textContent = 'Bundled export is not available when the editor is opened via file://. Serve the project over HTTP to enable it.';
+        if (generateBtn) generateBtn.disabled = true;
+      } else {
+        if (bundledPre) bundledPre.textContent = 'Click "Generate bundled CSS" to build a single minified stylesheet.';
+        if (generateBtn) generateBtn.disabled = false;
+      }
     }
 
     // ===== Toast helper =====
