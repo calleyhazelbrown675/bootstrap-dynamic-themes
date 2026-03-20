@@ -46,6 +46,27 @@ Bad personality moves:
 
 It is acceptable to touch colors indirectly through finish effects, such as glow, opacity, texture, or filtering, as long as the base palette still reads as the same theme.
 
+### 1.1 Personality must not duplicate an existing style category
+A personality cannot be just "another border", "another shadow", or "another rounding option".
+
+BTDT already has dedicated categories for things like:
+- borders
+- rounding
+- shadows
+- spacing
+- gradients
+- accent
+
+So if the requested effect can be described as a simple new option in one of those families, it probably belongs there instead of in `personality-*`.
+
+A personality is justified only when the result feels singular and distinctive as a final finish layer.
+
+For example:
+- a slightly different border thickness is not a personality
+- a slightly different shadow preset is not a personality
+- a new corner radius alone is not a personality
+- but a contour treatment that gives the whole interface a recognizable hand-drawn or cut-paper character can be a personality
+
 ### 2. Match the BTDT component surface
 When a personality affects shape or finish, target the components actually used by BTDT, not only global variables.
 
@@ -108,22 +129,27 @@ Examples:
 
 Avoid mixing several competing aesthetics in one file.
 
-### 6. Metadata update
-When adding a new personality value, update:
-- `btdt/js/config-ui.js`
+### 6. Catalog Sync
+When adding or removing a personality value, do NOT edit `btdt/js/config-ui.js` manually.
 
-Add the new option under the `personality` section so it appears in the editor.
+Instead, run:
+- `btdt/scripts/sync-configs.py`
 
-If minified assets are tracked for the changed files, keep them aligned too:
-- `btdt/themes/styles/personality-[value].min.css`
-- `btdt/js/config-ui.min.js`
+This regenerates `btdt/js/config-ui.js` from the styles catalog so the personality appears correctly in the editor.
+
+If the task also requires minified assets to be updated, run after that:
+- `btdt/scripts/minify-all.py`
+
+Order matters:
+1. `btdt/scripts/sync-configs.py`
+2. `btdt/scripts/minify-all.py`
 
 ## Workflow
 1. Inspect existing `personality-*.css`.
 2. Decide the single visual idea of the new personality.
 3. Create `personality-[value].css`.
-4. Register it in `btdt/js/config-ui.js`.
-5. Keep the matching `.min.css` and any tracked minified config in sync if needed.
+4. Run `btdt/scripts/sync-configs.py` to refresh the editor catalog.
+5. If the task requires minified assets too, run `btdt/scripts/minify-all.py`.
 6. Sanity-check that the result still feels like the same theme with a new finish.
 
 ## Example Reference

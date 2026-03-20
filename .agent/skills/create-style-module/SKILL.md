@@ -47,10 +47,20 @@ Default philosophy: backgrounds should usually stay white or near-white, with on
 - `accent-[1-5]` controls thickness via `--accent-size`.
 - `accent-primary|secondary|gray` controls accent color choice.
 
-### 7. Metadata Update (CRITICAL)
-If you add a NEW value to an existing category (or a new category), you MUST update `btdt/js/config-ui.js`.
-- Add the new value and its human-readable label to the appropriate object.
-- This ensures the UI buttons or selectors reflect the new option.
+### 7. Catalog Sync (CRITICAL)
+If you add a new style value or a new style category, do NOT edit `btdt/js/config-ui.js` manually.
+
+Instead, run:
+- `btdt/scripts/sync-configs.py`
+
+This regenerates `btdt/js/config-ui.js` from the actual modules present in `btdt/themes/styles/`.
+
+If the task also requires minified assets to be updated, run after that:
+- `btdt/scripts/minify-all.py`
+
+Order matters:
+1. `btdt/scripts/sync-configs.py`
+2. `btdt/scripts/minify-all.py`
 
 ## Example Reference
 ```css

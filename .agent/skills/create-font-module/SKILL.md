@@ -38,10 +38,20 @@ Optional but recommended when appropriate:
 ### 3. Fallbacks
 Always include standard system fallbacks (e.g., `sans-serif`, `serif`, `monospace`) to ensure a graceful degradation.
 
-### 4. Metadata Update (CRITICAL)
-After creating the CSS file, you MUST add the new font metadata to `btdt/js/config-fonts.js`.
-- Add a new entry with the font ID and its human-readable label.
-- This ensures the font appears in the editor's custom select dropdown with its correct preview.
+### 4. Catalog Sync (CRITICAL)
+After creating or removing a font module, do NOT edit `btdt/js/config-fonts.js` manually.
+
+Instead, run:
+- `btdt/scripts/sync-configs.py`
+
+This regenerates `btdt/js/config-fonts.js` from the filesystem and keeps the editor catalog aligned with the real modules.
+
+If the task also requires minified assets to be updated, run after that:
+- `btdt/scripts/minify-all.py`
+
+Order matters:
+1. `btdt/scripts/sync-configs.py`
+2. `btdt/scripts/minify-all.py`
 
 ## Example Reference
 ```css

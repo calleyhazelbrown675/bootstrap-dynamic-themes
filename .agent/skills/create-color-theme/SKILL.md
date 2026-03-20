@@ -59,10 +59,20 @@ Only adjust the template variables used by button styles. Do not edit selector b
 ### 3. Utility Classes
 Do not add or modify utility class selectors. The template defines them.
 
-### 4. Metadata Update (CRITICAL)
-After creating the CSS file, you MUST add the new theme metadata to `btdt/js/config-colors.js`.
-- Add a new entry with the theme ID and its primary, secondary, and accent colors (hex values).
-- This ensures the editor can display the color swatch in the new custom select dropdown.
+### 4. Catalog Sync (CRITICAL)
+After creating or removing a color module, do NOT edit `btdt/js/config-colors.js` manually.
+
+Instead, run:
+- `btdt/scripts/sync-configs.py`
+
+This regenerates `btdt/js/config-colors.js` from the filesystem and keeps the editor catalog aligned with the real modules.
+
+If the task also requires minified assets to be updated, run after that:
+- `btdt/scripts/minify-all.py`
+
+Order matters:
+1. `btdt/scripts/sync-configs.py`
+2. `btdt/scripts/minify-all.py`
 
 ### 5. Accessibility & Legibility (Crucial)
 The template already includes any required link legibility rules. Do not add or duplicate selector blocks.
