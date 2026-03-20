@@ -5,6 +5,8 @@ This directory contains maintenance and build utilities for the `btdt/` module.
 Available scripts:
 
 - `minify/`
+- `minify-all`
+- `minify-all.py`
 - `sync-configs.py`
 
 ## `minify/`
@@ -18,6 +20,8 @@ Files:
 
 - [`minify.py`](minify/minify.py)
 - [`requirements.txt`](minify/requirements.txt)
+- [`minify-all`](minify-all)
+- [`minify-all.py`](minify-all.py)
 
 ### Purpose
 
@@ -82,6 +86,8 @@ python minify.py preset ../../themes/preset
 - The script skips common non-source directories such as `.git`, `node_modules`, `__pycache__`, and `.venv`
 - In `preset` mode, circular imports are detected and reported as an error
 - `--help` works even if dependencies are not installed yet
+- `minify-all` is the Bash wrapper for running the full BTDT minification pass
+- `minify-all.py` is the Python wrapper equivalent for running the full BTDT minification pass
 
 ## `sync-configs.py`
 
