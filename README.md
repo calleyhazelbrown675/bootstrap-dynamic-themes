@@ -38,6 +38,19 @@ This project is organized as a standalone module (`btdt/`) that can be easily dr
 3.  **Export**: Click **"Copy CSS Preset"** to get your `@import` code.
 4.  **Save & Link**: Save your design in `btdt/themes/preset/my-theme.css` and link it in your HTML.
 
+### Editor Bundled Export
+
+The visual editor also includes a browser-side helper at [`btdt/editor/minify.js`](/home/enrique/trabajos/proyectos/bootstrap-dynamic-themes/btdt/editor/minify.js) for generating a **single bundled and minified preset CSS** from the current configuration.
+
+It is designed to mirror the preset flow from [`btdt/scripts/minify/minify.py`](/home/enrique/trabajos/proyectos/bootstrap-dynamic-themes/btdt/scripts/minify/minify.py):
+
+- Resolves local `@import` rules recursively
+- Leaves external or media-qualified `@import` rules untouched
+- Hoists remaining `@import` rules to the top
+- Minifies the final combined stylesheet
+
+This feature is only available when the editor is served over `http://` or `https://`, because it relies on `fetch()` to read the imported CSS files. When the editor is opened via `file://`, the bundled export UI is disabled and shows a "not available on file://" message.
+
 ## BTDT vs. Bootswatch
 
 While **Bootswatch** is an industry standard for static themes, **BTDT** takes it to the next level by being a dynamic engine:
