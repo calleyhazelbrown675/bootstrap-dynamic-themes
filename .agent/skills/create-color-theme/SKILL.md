@@ -1,5 +1,13 @@
 # Skill: Create Color Theme
 
+## When to use this skill
+Use this skill when the user explicitly asks to:
+- "create a new **color**", "create a color palette", "add a new color to the system"
+- "I need a new color variant called…", "design a color palette for…"
+- Create the raw color CSS variables file for a new palette (not a full theme)
+
+> **Note**: If the user asks to "create a theme" or "create a preset", use `create-theme-preset` instead. A color is just one part of a theme.
+
 This skill allows the AI to design and implement new color palettes for the Bootstrap Dynamic Themes (BTDT) system.
 
 ## Project Context

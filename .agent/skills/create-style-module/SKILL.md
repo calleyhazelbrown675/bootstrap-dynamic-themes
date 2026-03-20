@@ -1,5 +1,11 @@
 # Skill: Create Style Module
 
+## When to use this skill
+Use this skill when the user asks to:
+- "add a new border style", "create a shadow variant", "new spacing option"
+- "add a new rounding", "create a gradient style", "new accent position/size/color"
+- Extend any of the style categories in `btdt/themes/styles/`
+
 This skill allows the AI to create structural modifiers (borders, shadows, rounding, spacing) for the BTDT system.
 
 ## Project Context

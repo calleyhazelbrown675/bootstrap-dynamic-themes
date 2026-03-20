@@ -2,6 +2,20 @@
 
 This skill allows the AI to combine color, font, and style modules into a "Production Preset" that is self-descriptive and compatible with the BTDT engine.
 
+## When to use this skill
+Use this skill when the user asks to:
+- "create a preset", "create a theme", "make a preset", "combine styles into a preset"
+- "fix a missing preset", "a preset is not working / doesn't exist"
+- "create a theme called…" when the intent is to assemble existing modules (not design new colors)
+
+## Available Modules
+Before choosing modules, inspect what already exists:
+- **Colors**: `btdt/themes/colors/` — all `.css` files except `_template_.css` and `*.min.css`
+- **Fonts**: `btdt/themes/fonts/` — all `.css` files except `*.min.css`
+- **Styles**: `btdt/themes/styles/` — grouped by prefix:
+  - `background-*`, `borders-*`, `rounding-*`, `shadows-*`, `spacing-*`
+  - `gradients-*`, `accent-*` (position), `accent-[1-5].css` (size), `accent-primary/secondary/gray.css` (color)
+
 ## Project Context
 A preset is a single CSS file that imports other modules. It also includes "Invisible Metadata" so the Editor can recognize and sync the configuration even when running locally via `file://`.
 

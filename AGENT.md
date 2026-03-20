@@ -1,2 +1,20 @@
-Check the `.agent/skills/` directory for available skills.
-Each skill has a `SKILL.md` with instructions and specific rules.
+# Agent Instructions — Bootstrap Dynamic Themes
+
+Skills are located in `.agent/skills/`. Each skill has a `SKILL.md` with detailed rules.
+**ALWAYS read the relevant `SKILL.md` BEFORE doing any work in that area.**
+
+## Skill Trigger Map
+
+| When the user asks to… | Read this skill first |
+|---|---|
+| Create a new **color** (a color palette, a new color file, new color variables) | `.agent/skills/create-color-theme/` |
+| Add a new font or typography option | `.agent/skills/create-font-module/` |
+| Create a new style modifier (borders, shadows, rounding, spacing, gradients, accent…) | `.agent/skills/create-style-module/` |
+| Create a new **theme** or **preset** (a named theme that combines color + font + styles) | `.agent/skills/create-theme-preset/` |
+
+## Core Concepts Summary
+
+- **Fonts** (`btdt/themes/fonts/`): Typography modules using Google Fonts, mapping variables like `--bs-body-font-family`.
+- **Colors** (`btdt/themes/colors/`): Palettes of CSS variables (primary, secondary, etc.). They contain only color data.
+- **Styles** (`btdt/themes/styles/`): Structural modifiers (borders, shadows, rounding, spacing) that change the UI feel.
+- **Themes / Presets** (`btdt/themes/preset/`): Files that combine exactly **one** of each previous item via `@import` to create a complete look.

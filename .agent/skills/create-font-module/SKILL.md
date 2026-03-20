@@ -1,5 +1,11 @@
 # Skill: Create Font Module
 
+## When to use this skill
+Use this skill when the user asks to:
+- "add a new font", "create a font module", "add typography option"
+- "I want the theme to use [Font Name]", when that font has no module yet
+- Add a Google Font to the system for use in presets
+
 This skill allows the AI to add new typography options to the BTDT ecosystem using Google Fonts.
 
 ## Project Context
