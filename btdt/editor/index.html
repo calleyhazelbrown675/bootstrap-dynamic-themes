@@ -553,7 +553,8 @@
               <li><a class="dropdown-item" href="#collapse">Collapse</a></li>
               <li><a class="dropdown-item" href="#dropdowns">Dropdowns</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#interactive">Modals, Toasts & Offcanvas</a></li>
+              <li><a class="dropdown-item" href="#modals">Modals</a></li>
+              <li><a class="dropdown-item" href="#interactive">Toasts & Offcanvas</a></li>
               <li><a class="dropdown-item" href="#toolbars">Toolbars & Spacing</a></li>
               <li><a class="dropdown-item" href="#extras">Spinners & Placeholders</a></li>
             </ul>
@@ -1612,11 +1613,46 @@
       </div>
     </div>
 
+
+    <!-- ===== Modals ===== -->
+    <div class="mb-5" id="modals">
+      <h4 class="fw-bold mb-3 pb-2 border-bottom">Modals</h4>
+      <div class="d-flex gap-2 flex-wrap">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDemo">
+          Default Modal
+        </button>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalLargeDemo">
+          Large Modal
+        </button>
+        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalSmallDemo">
+          Small Modal
+        </button>
+        <div class="modal d-block position-relative p-0 mt-3" style="z-index: auto;">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Modal Title</h5>
+                <button type="button" class="btn-close" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                    <p>This is a standard Bootstrap 5 modal dialog.</p>
+                    <p>Modals are used to display content in an overlay above the page.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
     <!-- ===== Interactive Components ===== -->
     <div class="mb-5" id="interactive">
       <h4 class="fw-bold mb-3 pb-2 border-bottom">Interactive Components</h4>
-      <div class="row g-4">
-        <div class="col-md-6">
+      <div class="d-flex flex-wrap gap-3 align-items-center">
+        <div class="col12">
           <h6 class="text-muted mb-3">Offcanvas &amp; Toasts</h6>
           <div class="d-flex gap-2 flex-wrap">
             <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
@@ -1626,20 +1662,6 @@
             <button class="btn btn-success" onclick="showToast('toast-success')">✅ Success</button>
             <button class="btn btn-danger" onclick="showToast('toast-danger')">❌ Error</button>
             <button class="btn btn-warning" onclick="showToast('toast-warning')">⚠️ Warning</button>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <h6 class="text-muted mb-3">Modals</h6>
-          <div class="d-flex gap-2 flex-wrap">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDemo">
-              Default Modal
-            </button>
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalLargeDemo">
-              Large Modal
-            </button>
-            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalSmallDemo">
-              Small Modal
-            </button>
           </div>
         </div>
       </div>
