@@ -4,10 +4,48 @@ This directory contains maintenance and build utilities for the `btdt/` module.
 
 Available scripts:
 
+- `export-runtime.py`
 - `minify/`
 - `minify-all`
 - `minify-all.py`
 - `sync-configs.py`
+
+## `export-runtime.py`
+
+Utility to export the minimal BTDT runtime asset subset into another directory.
+
+File:
+
+- [`export-runtime.py`](export-runtime.py)
+
+### Purpose
+
+`export-runtime.py` creates or updates `DESTINATION/btdt/` and copies only:
+
+- `README.md` de la raíz del proyecto como `DESTINATION/btdt/README.md`
+- `btdt/css/bootstrap.min.css`
+- `btdt/css/color-theme-rules.min.css`
+- `btdt/js/bootstrap.bundle.min.js`
+- `btdt/js/btdt.min.js`
+- `btdt/themes/modes/dark.min.css`
+- `btdt/themes/preset/*.min.css`
+
+It preserves the relative directory structure inside the exported `btdt/` folder.
+
+Examples:
+
+```bash
+python3 btdt/scripts/export-runtime.py /tmp/runtime-export
+python3 btdt/scripts/export-runtime.py /tmp/runtime-export --force
+python3 btdt/scripts/export-runtime.py /tmp/runtime-export --dry-run
+```
+
+### Notes
+
+- This script uses only Python's standard library
+- The destination argument is the parent directory; the script creates `DESTINATION/btdt/`
+- If `DESTINATION/btdt/` already exists, the script does nothing unless `--force` is passed
+- With `--force`, existing files in the destination are overwritten only for the exported subset
 
 ## `minify/`
 
