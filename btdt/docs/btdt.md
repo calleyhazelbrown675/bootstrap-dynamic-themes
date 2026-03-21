@@ -8,7 +8,7 @@ Production loader for BTDT. Handles color mode (light/dark) detection and applic
 
 ## Installation
 
-Include the script in the `<head>` of your HTML, before any preset stylesheets:
+Include the script in the `<head>` of your HTML, preferably after your preset `<link>` if you want the script to adopt it on load:
 
 ```html
 <script src="path/to/btdt/js/btdt.js"
@@ -44,7 +44,6 @@ The same approach also works with `btdt.js`, but `btdt.min.js` is the recommende
 
 For a minimal production deployment, the runtime only needs:
 
-- `btdt/README.md`
 - `btdt/css/bootstrap.min.css`
 - `btdt/js/btdt.min.js`
 - `btdt/themes/modes/dark.min.css`
