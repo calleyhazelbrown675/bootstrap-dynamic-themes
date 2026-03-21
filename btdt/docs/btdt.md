@@ -21,12 +21,13 @@ Include the script in the `<head>` of your HTML, before any preset stylesheets:
 
 The script auto-detects its own base path from the `src` URL, so no additional configuration is needed in most setups.
 
+Named preset loads use `*.min.css` by default. Set `data-minified="false"` only if you explicitly want source preset files instead.
+
 For production, prefer the minified build:
 
 ```html
 <script src="path/to/btdt/js/btdt.min.js"
         data-preset="theme-name"
-        data-minified="true"
         data-dark-cookie="dark_mode"
         data-cookie-expire="30"
         data-dark-system="true">
@@ -41,6 +42,15 @@ If you need predictable cache invalidation after releases, it is convenient to v
 
 The same approach also works with `btdt.js`, but `btdt.min.js` is the recommended choice for production.
 
+For a minimal production deployment, the runtime only needs:
+
+- `btdt/README.md`
+- `btdt/css/bootstrap.min.css`
+- `btdt/js/bootstrap.bundle.min.js`
+- `btdt/js/btdt.min.js`
+- `btdt/themes/modes/dark.min.css`
+- `btdt/themes/preset/*.min.css`
+
 ---
 
 ## Attributes
@@ -49,7 +59,7 @@ The same approach also works with `btdt.js`, but `btdt.min.js` is the recommende
 |---|---|---|---|
 | `data-base-path` | string | auto | Base path for assets. Detected automatically from the script URL. |
 | `data-preset` | string | — | CSS preset to load. Short name (e.g. `"theme-name"`) or a literal stylesheet path/URL. Any value ending in `.css` or containing `/` is used as-is. |
-| `data-minified` | boolean | `false` | If `"true"`, loads `.min.css` files. |
+| `data-minified` | boolean | `true` | If not set, named preset loads use `.min.css` files. Set to `"false"` to target non-minified preset files. |
 | `data-auto-init` | boolean | `true` | If `"false"`, disables automatic initialization: no preset is auto-loaded/adopted, no dark-mode stylesheet is injected, and no listeners are registered. |
 | `data-dark-value` | string | — | Literal value indicating the initial dark mode state. Takes priority over all other sources. |
 | `data-dark-cookie` | string | — | Name of the cookie that stores the mode preference. If not set, no cookie is read or written at any point. |
@@ -89,11 +99,11 @@ Loads a CSS preset stylesheet. Updates the `<link id="theme-preset">` element in
 | Parameter | Type | Description |
 |---|---|---|
 | `name` | string | Preset name (e.g. `"corporate"`) or a literal stylesheet path/URL. Any value ending in `.css` or containing `/` is used as-is. |
-| `options.minified` | boolean | Load the `.min.css` variant. Defaults to `data-minified`. |
+| `options.minified` | boolean | Load the `.min.css` variant. Defaults to `true` unless `data-minified="false"` is set. |
 
 ```js
 btdt.load('corporate');
-btdt.load('corporate', { minified: true });
+btdt.load('corporate', { minified: false });
 btdt.load('/assets/themes/custom.css');
 ```
 
@@ -198,7 +208,7 @@ Production variant:
 
 ```html
 <script src="btdt/js/btdt.min.js?v=x.x.x"
-        data-preset="theme-name" data-minified="true">
+        data-preset="theme-name">
 </script>
 ```
 
@@ -218,7 +228,6 @@ The cookie expires when the browser is closed. The OS preference is used as fall
 ```html
 <script src="btdt/js/btdt.js"
         data-preset="theme-name"
-        data-minified="true"
         data-dark-cookie="dark_mode"
         data-dark-system="true">
 </script>
@@ -229,7 +238,6 @@ The cookie expires when the browser is closed. The OS preference is used as fall
 ```html
 <script src="btdt/js/btdt.js"
         data-preset="theme-name"
-        data-minified="true"
         data-dark-cookie="dark_mode"
         data-cookie-expire="30"
         data-dark-system="true">
@@ -243,7 +251,6 @@ The server writes the user's stored preference directly into the attribute. `dat
 ```html
 <script src="btdt/js/btdt.js"
         data-preset="theme-name"
-        data-minified="true"
         data-dark-value="<?= $user->darkMode ? 'dark' : 'light' ?>"
         data-dark-cookie="dark_mode"
         data-cookie-expire="365">
@@ -284,6 +291,15 @@ document.documentElement.addEventListener('btdt:modechange', (e) => {
 </script>
 ```
 
+If you want source presets during manual control, override it explicitly:
+
+```html
+<script src="btdt/js/btdt.js"
+        data-auto-init="false"
+        data-minified="false">
+</script>
+```
+
 ### Toggle button with mode-specific icons
 
 ```html
@@ -302,5 +318,6 @@ document.documentElement.addEventListener('btdt:modechange', (e) => {
 - The dark-mode overlay stylesheet is managed separately via `<link id="theme-preset-dark">` and points to `themes/modes/dark.min.css?v=<version>`.
 - That dark-mode stylesheet is injected during auto-init and toggled via the `media` attribute (`"all"` / `"not all"`), so the browser downloads it once and applies it without layout shift.
 - `btdt.js` and `btdt.min.js` expose the same API and behavior. The minified file is preferable in production; adding `?v=x.x.x` to the script URL is a simple way to invalidate browser caches on deploy.
+- Named preset loads resolve to `themes/preset/<name>.min.css` by default. Use `data-minified="false"` or `btdt.load(name, { minified: false })` only when you intentionally need source CSS.
 - When `data-dark-value` is present, no cookie is written on toggle, since `data-dark-value` would override it on the next page load anyway.
 - The OS `prefers-color-scheme` listener is only registered when `data-dark-system="true"` is set and no higher-priority source (`data-dark-value`, `data-dark-cookie`) is configured.
