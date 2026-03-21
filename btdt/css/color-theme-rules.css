@@ -638,6 +638,14 @@
   color: var(--bs-secondary-text-emphasis) !important;
 }
 
+.text-primary {
+  color: var(--bs-primary-text-emphasis) !important;
+}
+
+.text-secondary {
+  color: var(--bs-secondary-text-emphasis) !important;
+}
+
 .bg-success-subtle {
   background-color: var(--bs-success-bg-subtle) !important;
   color: var(--bs-success-text-emphasis) !important;
