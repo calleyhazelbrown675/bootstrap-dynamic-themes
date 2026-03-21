@@ -408,6 +408,9 @@
   --bs-dropdown-link-active-bg: var(--bs-primary);
   --bs-dropdown-link-disabled-color: var(--bs-tertiary-color);
   --bs-dropdown-header-color: var(--bs-secondary-color);
+  max-height: min(24rem, calc(100vh - 2rem));
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 
