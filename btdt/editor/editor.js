@@ -80,11 +80,6 @@
       });
   }
 
-  function toggleDarkMode(isDark) {
-    themeManager.setMode(isDark ? 'dark' : 'light');
-    updatePanelState();
-  }
-
   function setTheme(category, value, e) {
     if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
     themeManager.set(category, value);
@@ -496,7 +491,6 @@
     initThemeDrawer();
   });
 
-  window.toggleDarkMode = toggleDarkMode;
   window.setTheme = setTheme;
   window.applyPreset = applyPreset;
   window.toggleCustomDropdown = toggleCustomDropdown;

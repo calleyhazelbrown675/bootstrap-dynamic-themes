@@ -1,100 +1,4 @@
-/* ===== Theme Control Panel ===== */
-.theme-panel {
-  position: fixed;
-  right: -400px;
-  top: 0;
-  width: 358px;
-  height: 100vh;
-  background: #fff;
-  border-left: 1px solid #dee2e6;
-  z-index: 9999;
-  overflow-y: auto;
-  transition: right 0.3s ease;
-  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
-}
-
-.theme-panel.open {
-  right: 0;
-}
-
-/* Panel Scrollbar */
-.theme-panel::-webkit-scrollbar {
-  width: 8px;
-}
-.theme-panel::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-.theme-panel::-webkit-scrollbar-thumb {
-  background: #ccc;
-  border-radius: 10px;
-}
-.theme-panel::-webkit-scrollbar-thumb:hover {
-  background: #999;
-}
-
-.theme-panel-toggle {
-  position: fixed;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10000;
-  background: rgba(45, 45, 45, 0.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-right: none;
-  width: 44px;
-  height: 48px;
-  border-radius: 24px 0 0 24px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.theme-panel-toggle:hover {
-  width: 54px;
-  padding-right: 10px;
-  background: #212529;
-  box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
-}
-
-.theme-panel-toggle span {
-  font-size: 1.25rem;
-  display: inline-block;
-  transition: transform 0.5s ease;
-  animation: rotate-gear 10s linear infinite;
-  opacity: 0.9;
-}
-
-.theme-panel-toggle:hover span {
-  transform: scale(1.1);
-  opacity: 1;
-}
-
-@keyframes rotate-gear {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.theme-panel.open~.theme-panel-toggle {
-  right: 358px;
-  width: 40px;
-  height: 40px;
-  border-radius: 8px 0 0 8px;
-  background: rgba(33, 37, 41, 0.95);
-}
-
-.theme-panel.open~.theme-panel-toggle span {
-  animation: none;
-  transform: rotate(180deg);
-  font-size: 1.1rem;
-}
-
-/* ===== Panel should stay visually stable (ignore themes) ===== */
+/* ===== Editor UI variables ===== */
 :root {
   --panel-primary: #0d6efd;
   --panel-primary-rgb: 13, 110, 253;
@@ -105,84 +9,6 @@
   --panel-muted: #6c757d;
   --panel-bg: #ffffff;
   --panel-bg-soft: #f8f9fa;
-}
-
-.theme-panel {
-  color-scheme: light;
-  color: var(--panel-text);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
-
-.theme-panel .btn {
-  padding: 0.375rem 0.75rem;
-  border-radius: 0.375rem;
-  box-shadow: none;
-  font-size: 1rem;
-  font-family: inherit;
-  border-width: 1px;
-  transition: none;
-}
-
-.theme-panel .btn:hover,
-.theme-panel .btn:active {
-  transform: none;
-  box-shadow: none;
-}
-
-.theme-panel .btn-sm {
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-}
-
-.theme-panel .btn-outline-primary {
-  --bs-btn-color: var(--panel-primary);
-  --bs-btn-border-color: var(--panel-primary);
-  --bs-btn-hover-bg: var(--panel-primary);
-  --bs-btn-hover-border-color: var(--panel-primary);
-  --bs-btn-hover-color: #fff;
-  --bs-btn-active-bg: #0b5ed7;
-  --bs-btn-active-border-color: #0a58ca;
-  --bs-btn-active-color: #fff;
-}
-
-.theme-panel .btn-outline-secondary {
-  --bs-btn-color: var(--panel-secondary);
-  --bs-btn-border-color: var(--panel-secondary);
-  --bs-btn-hover-bg: var(--panel-secondary);
-  --bs-btn-hover-border-color: var(--panel-secondary);
-  --bs-btn-hover-color: #fff;
-  --bs-btn-active-bg: #5c636a;
-  --bs-btn-active-border-color: #565e64;
-  --bs-btn-active-color: #fff;
-}
-
-.theme-panel h1,
-.theme-panel h2,
-.theme-panel h3,
-.theme-panel h4,
-.theme-panel h5,
-.theme-panel h6,
-.theme-panel .h1,
-.theme-panel .h2,
-.theme-panel .h3,
-.theme-panel .h4,
-.theme-panel .h5,
-.theme-panel .h6 {
-  font-family: inherit;
-  letter-spacing: normal;
-}
-
-.theme-panel .bg-dark {
-  background-color: #212529 !important;
-}
-
-.theme-panel .text-light {
-  color: #f8f9fa !important;
-}
-
-.theme-panel .rounded {
-  border-radius: 0.375rem !important;
 }
 
 .mdi {
@@ -748,32 +574,9 @@ body.theme-drawer-preload #main-navbar-hidden {
   outline-offset: 2px;
 }
 
-#theme-drawer .theme-drawer-panel-header,
-#theme-drawer .theme-drawer-footer-copy,
-#theme-drawer .theme-drawer-link-text {
-  transition: opacity var(--theme-drawer-speed) ease;
-}
-
-#theme-drawer.theme-drawer-state-icons .theme-drawer-panel-header,
-#theme-drawer.theme-drawer-state-icons .theme-drawer-footer-copy,
-#theme-drawer.theme-drawer-state-icons .theme-drawer-link-text,
-#theme-drawer.theme-drawer-state-hidden .theme-drawer-panel-header,
-#theme-drawer.theme-drawer-state-hidden .theme-drawer-footer-copy,
-#theme-drawer.theme-drawer-state-hidden .theme-drawer-link-text {
-  opacity: 0;
-  pointer-events: none;
-}
-
 #theme-drawer.theme-drawer-state-icons #theme-drawer-tabs-content,
 #theme-drawer.theme-drawer-state-hidden #theme-drawer-tabs-content {
   visibility: hidden;
-}
-
-#theme-drawer .theme-drawer-link {
-  min-height: 46px;
-  display: flex;
-  align-items: center;
-  gap: .75rem;
 }
 
 #theme-drawer-overlay {
@@ -931,13 +734,6 @@ body.theme-drawer-layout-hidden #main-navbar-hidden {
   #theme-drawer.theme-drawer-state-hidden {
     box-shadow: none !important;
     border-right-color: transparent;
-  }
-
-  #theme-drawer .theme-drawer-panel-header,
-  #theme-drawer .theme-drawer-footer-copy,
-  #theme-drawer .theme-drawer-link-text {
-    opacity: 1 !important;
-    pointer-events: auto !important;
   }
 
   #theme-drawer #theme-drawer-tabs-content {
