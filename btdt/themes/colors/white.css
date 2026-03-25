@@ -269,3 +269,8 @@
 .list-group {
   --bs-list-group-action-hover-color: var(--bs-body-color);
 }
+
+/* ─── Fix primary button visibility on white theme ─── */
+.btn-primary {
+  --bs-btn-border-color: var(--bs-border-color);
+}

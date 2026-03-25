@@ -2,9 +2,9 @@
 @import "../fonts/merriweather.css";
 @import "../colors/white.css";
 @import "../styles/background-none.css";
-@import "../styles/borders-normal.css";
+@import "../styles/borders-minimal.css";
 @import "../styles/rounding-none.css";
-@import "../styles/shadows-none.css";
+@import "../styles/shadows-normal.css";
 @import "../styles/spacing-large.css";
 @import "../styles/gradients-off.css";
 @import "../styles/accent-bottom.css";
@@ -16,9 +16,9 @@
   --preset-colors: "white";
   --preset-fonts: "merriweather";
   --preset-background: "none";
-  --preset-borders: "normal";
+  --preset-borders: "minimal";
   --preset-rounding: "none";
-  --preset-shadows: "none";
+  --preset-shadows: "normal";
   --preset-spacing: "large";
   --preset-gradients: "off";
   --preset-accent: "bottom";
