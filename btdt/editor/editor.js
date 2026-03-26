@@ -91,6 +91,15 @@
     updatePanelState();
   }
 
+  async function confirmResetTheme(e) {
+    if (e && typeof e.stopPropagation === 'function') e.stopPropagation();
+
+    const shouldReset = window.confirm('Reset the theme to the Default preset?');
+    if (!shouldReset) return;
+
+    await applyPreset('default');
+  }
+
   function toggleCustomDropdown(type) {
     const container = document.getElementById(`${type}SelectContainer`);
     const dropdown = document.getElementById(`${type}Dropdown`);
@@ -503,6 +512,7 @@
 
   window.setTheme = setTheme;
   window.applyPreset = applyPreset;
+  window.confirmResetTheme = confirmResetTheme;
   window.toggleCustomDropdown = toggleCustomDropdown;
   window.closeAllCustomDropdowns = closeAllCustomDropdowns;
   window.togglePanel = togglePanel;
