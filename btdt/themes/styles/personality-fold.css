@@ -96,6 +96,7 @@
 /* Accordion: efecto ficha de archivo */
 .accordion-item {
   border-radius: 0 20px 20px 0 !important;
+  overflow: hidden;
 }
 
 .accordion-item:nth-of-type(even) {

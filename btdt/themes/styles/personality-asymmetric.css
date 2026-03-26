@@ -54,11 +54,15 @@
 .dropdown-menu,
 .modal-content,
 .toast,
-.accordion-item,
 .alert,
 .list-group-item,
 .navbar {
   border-radius: var(--personality-asymmetric-radius-soft) !important;
+}
+
+.accordion-item {
+  border-radius: var(--personality-asymmetric-radius-soft) !important;
+  overflow: hidden;
 }
 
 .form-control,

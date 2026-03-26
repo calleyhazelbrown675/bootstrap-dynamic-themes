@@ -81,6 +81,7 @@
 
 .accordion-item {
   border-radius: var(--personality-pill-radius-medium) !important;
+  overflow: hidden;
 }
 
 .accordion-button {
