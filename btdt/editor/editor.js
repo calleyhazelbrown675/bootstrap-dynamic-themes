@@ -26,7 +26,6 @@
 
   function buildPanel() {
     const presetsHtml = themeManager.getPresets()
-      .filter(name => name !== 'default')
       .map(name => {
         const meta = presetMeta[name] || { title: name, color: null };
         const swatch = colorSwatches[meta.color] || {
@@ -214,7 +213,7 @@
           el.classList.toggle('active', el.dataset.value === value);
         });
 
-        const shouldShowSelectedValue = Boolean(value) && (value !== 'default' || type !== 'preset');
+        const shouldShowSelectedValue = Boolean(value);
 
         if (shouldShowSelectedValue) {
           if (type === 'preset') {
@@ -473,7 +472,7 @@
     scheduleRefresh(true);
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', async () => {
     syncNavbarHeight();
 
     document.querySelectorAll('[data-bs-toggle="tooltip"]')
@@ -486,6 +485,15 @@
     });
 
     if (typeof themeManager !== 'undefined') {
+      const config = themeManager.getConfig();
+      const hasActiveTheme = Boolean(
+        config._preset || Object.entries(config).some(([category, value]) => category !== '_preset' && value)
+      );
+
+      if (!hasActiveTheme) {
+        await themeManager.applyPreset('default');
+      }
+
       buildPanel();
       updatePanelState();
     }
