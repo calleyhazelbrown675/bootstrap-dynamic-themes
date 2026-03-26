@@ -32,7 +32,7 @@
 
   /* ── Semantic colors ─────────────────────────────────── */
   --bs-primary:       #4a4a4a;
-  --bs-secondary:     #757575;
+  --bs-secondary:     #7c7c7c;
   --bs-success:       #8bc34a;
   --bs-info:          #80deea;
   --bs-warning:       #fff176;
@@ -41,7 +41,7 @@
   --bs-dark:          #0a0a0a;
 
   --bs-primary-rgb:   74, 74, 74;
-  --bs-secondary-rgb: 117, 117, 117;
+  --bs-secondary-rgb: 124, 124, 124;
   --bs-success-rgb:   139, 195, 74;
   --bs-info-rgb:      128, 222, 234;
   --bs-warning-rgb:   255, 241, 118;
@@ -83,7 +83,7 @@
   --bs-secondary-hover-border:#757575;
   --bs-secondary-active-bg:   #757575;
   --bs-secondary-active-border:#757575;
-  --bs-secondary-focus-shadow-rgb: 117, 117, 117;
+  --bs-secondary-focus-shadow-rgb: 124, 124, 124;
 
   --bs-success-hover-bg:    #689f38;
   --bs-success-hover-border:#689f38;
@@ -207,6 +207,23 @@
   --bs-nav-tabs-link-active-color: var(--bs-body-color);
 }
 
+/* Ensure primary buttons keep readable contrast in dark mode */
+[data-mode="dark"] .btn-primary {
+  --bs-btn-color: var(--bs-body-color);
+  --bs-btn-bg: var(--bs-primary);
+  --bs-btn-border-color: var(--bs-primary);
+  --bs-btn-hover-color: var(--bs-body-bg);
+  --bs-btn-hover-bg: var(--bs-primary-hover-bg);
+  --bs-btn-hover-border-color: var(--bs-primary-hover-border);
+  --bs-btn-focus-shadow-rgb: var(--bs-primary-focus-shadow-rgb);
+  --bs-btn-active-color: var(--bs-body-bg);
+  --bs-btn-active-bg: var(--bs-primary-active-bg);
+  --bs-btn-active-border-color: var(--bs-primary-active-border);
+  --bs-btn-disabled-color: var(--bs-body-color);
+  --bs-btn-disabled-bg: var(--bs-primary);
+  --bs-btn-disabled-border-color: var(--bs-primary);
+}
+
 /* Ensure outline dark is visible on dark surfaces */
 [data-mode="dark"] .btn-outline-dark {
   --bs-btn-color: var(--bs-body-color);
@@ -222,15 +239,30 @@
   --bs-btn-disabled-border-color: var(--bs-light);
 }
 
+/* Ensure outline light keeps enough contrast on dark surfaces */
+[data-mode="dark"] .btn-outline-light {
+  --bs-btn-color: var(--bs-body-color);
+  --bs-btn-border-color: var(--bs-body-color);
+  --bs-btn-hover-color: var(--bs-body-bg);
+  --bs-btn-hover-bg: var(--bs-body-color);
+  --bs-btn-hover-border-color: var(--bs-body-color);
+  --bs-btn-focus-shadow-rgb: var(--bs-body-color-rgb);
+  --bs-btn-active-color: var(--bs-body-bg);
+  --bs-btn-active-bg: var(--bs-body-color);
+  --bs-btn-active-border-color: var(--bs-body-color);
+  --bs-btn-disabled-color: var(--bs-secondary-color);
+  --bs-btn-disabled-border-color: var(--bs-gray-500);
+}
+
 /* Ensure outline primary stays visible on dark surfaces */
 [data-mode="dark"] .btn-outline-primary {
   --bs-btn-color: var(--bs-body-color);
   --bs-btn-border-color: var(--bs-body-color);
-  --bs-btn-hover-color: var(--bs-dark-contrast);
+  --bs-btn-hover-color: var(--bs-body-bg);
   --bs-btn-hover-bg: var(--bs-body-color);
   --bs-btn-hover-border-color: var(--bs-body-color);
   --bs-btn-focus-shadow-rgb: var(--bs-body-color-rgb);
-  --bs-btn-active-color: var(--bs-dark-contrast);
+  --bs-btn-active-color: var(--bs-body-bg);
   --bs-btn-active-bg: var(--bs-body-color);
   --bs-btn-active-border-color: var(--bs-body-color);
   --bs-btn-disabled-color: var(--bs-body-color);
