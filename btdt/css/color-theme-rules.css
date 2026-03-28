@@ -726,16 +726,18 @@ button.list-group-item.active {
 /* ─────────────────────────────────────────────
    LINKS INSIDE BACKGROUNDS
    ───────────────────────────────────────────── */
-.bg-primary a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link)    { color: rgba(var(--bs-primary-contrast-rgb), 0.85) !important; }
-.bg-secondary a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link)  { color: rgba(var(--bs-secondary-contrast-rgb), 0.85) !important; }
-.bg-success a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link)    { color: rgba(var(--bs-success-contrast-rgb), 0.85) !important; }
-.bg-info a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link)       { color: rgba(var(--bs-info-contrast-rgb), 0.85) !important; }
-.bg-warning a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link)    { color: rgba(var(--bs-warning-contrast-rgb), 0.85) !important; }
-.bg-danger a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link)     { color: rgba(var(--bs-danger-contrast-rgb), 0.85) !important; }
-.bg-dark a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link)       { color: rgba(var(--bs-dark-contrast-rgb), 0.85) !important; }
-.bg-light a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link)      { color: rgba(var(--bs-light-contrast-rgb), 0.85) !important; }
-.bg-black a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link)      { color: rgba(var(--bs-black-contrast-rgb), 0.85) !important; }
-.bg-white a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link)      { color: rgba(var(--bs-white-contrast-rgb), 0.85) !important; }
+.bg-primary a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link),
+.bg-secondary a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link),
+.bg-success a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link),
+.bg-info a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link),
+.bg-warning a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link),
+.bg-danger a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link),
+.bg-dark a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link),
+.bg-light a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link),
+.bg-black a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link),
+.bg-white a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link) {
+  color: color-mix(in srgb, currentColor 85%, transparent) !important;
+}
 
 .bg-primary a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link):hover    { color: var(--bs-primary-contrast) !important; }
 .bg-secondary a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link):hover  { color: var(--bs-secondary-contrast) !important; }
@@ -747,6 +749,25 @@ button.list-group-item.active {
 .bg-light a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link):hover      { color: var(--bs-light-contrast) !important; }
 .bg-black a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link):hover      { color: var(--bs-black-contrast) !important; }
 .bg-white a:not(.btn):not(.dropdown-item):not(.dropdown-header):not(.list-group-item):not(.page-link):hover      { color: var(--bs-white-contrast) !important; }
+
+/* Ensure Bootstrap navbar variables follow the computed foreground color of bg-* navbars. */
+.navbar.bg-primary,
+.navbar.bg-secondary,
+.navbar.bg-success,
+.navbar.bg-info,
+.navbar.bg-warning,
+.navbar.bg-danger,
+.navbar.bg-light,
+.navbar.bg-dark,
+.navbar.bg-black,
+.navbar.bg-white {
+  --bs-navbar-color: color-mix(in srgb, currentColor 85%, transparent);
+  --bs-navbar-hover-color: currentColor;
+  --bs-navbar-active-color: currentColor;
+  --bs-navbar-brand-color: currentColor;
+  --bs-navbar-brand-hover-color: currentColor;
+  --bs-navbar-toggler-border-color: color-mix(in srgb, currentColor 15%, transparent);
+}
 
 
 /* ─────────────────────────────────────────────
